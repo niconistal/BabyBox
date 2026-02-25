@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BabyBox - Electronics Assembly Guide</title>
+  <meta name="description" content="Detailed electronics assembly guide for BabyBox: GPIO wiring, component mounting, magnet insertion, and step-by-step build instructions.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+          <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+          <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+          <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+          <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+        </svg>
+        BabyBox
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="features.html">Features</a>
+        <a href="setup.html">Setup</a>
+        <a href="assembly-guide.html" class="active">Assembly Guide</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="https://github.com" class="nav-github" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Assembly Guide</span>
+      <h1>Electronics Assembly Guide</h1>
+      <p>Complete GPIO pinout, wiring diagrams, component mounting, and step-by-step instructions to build a BabyBox from scratch.</p>
+    </div>
+  </section>
+
+  <!-- Section Jump Nav -->
+  <div class="guide-nav">
+    <div class="guide-nav-inner">
+      <a href="#bom">Bill of Materials</a>
+      <a href="#gpio">GPIO Reference</a>
+      <a href="#printing">3D Printing</a>
+      <a href="#magnets">Magnets</a>
+      <a href="#mounting">Electronics</a>
+      <a href="#wiring">Wiring</a>
+      <a href="#figurines">Figurines</a>
+      <a href="#assembly">Final Assembly</a>
+      <a href="#safety">Safety</a>
+    </div>
+  </div>
+
+  <!-- Section 1: Bill of Materials -->
+  <section class="section" id="bom">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">What You Need</span>
+        <h2>Bill of Materials</h2>
+        <p>Everything you need to build a BabyBox. Most electronic components come from a standard sensor kit. Total cost is approximately $51 if you already own a Bluetooth speaker.</p>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Qty</th>
+              <th>Source</th>
+              <th>Est. Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Raspberry Pi Zero 2 W</td><td>1</td><td>Purchase</td><td>~$15</td></tr>
+            <tr><td>MicroSD card (32 GB+)</td><td>1</td><td>Purchase</td><td>~$8</td></tr>
+            <tr><td>MFRC522 RFID Module</td><td>1</td><td>Sensor kit</td><td>--</td></tr>
+            <tr><td>RFID coin stickers (25mm, 13.56 MHz)</td><td>10</td><td>Purchase</td><td>~$5</td></tr>
+            <tr><td>Neodymium magnets (6x3mm disc)</td><td>20+</td><td>Purchase</td><td>~$5</td></tr>
+            <tr><td>Bluetooth speaker</td><td>1</td><td>Already owned</td><td>~$0-20</td></tr>
+            <tr><td>WS2812 RGB 8-LED strip</td><td>1</td><td>Sensor kit</td><td>--</td></tr>
+            <tr><td>Passive buzzer</td><td>1</td><td>Sensor kit</td><td>--</td></tr>
+            <tr><td>Tactile buttons (6x6mm)</td><td>2</td><td>Sensor kit</td><td>--</td></tr>
+            <tr><td>Resistors / wires / breadboard</td><td>1</td><td>Sensor kit</td><td>--</td></tr>
+            <tr><td>5V 3A micro-USB power supply</td><td>1</td><td>Purchase</td><td>~$8</td></tr>
+            <tr><td>Mini-HDMI to HDMI cable</td><td>1</td><td>Purchase</td><td>~$5</td></tr>
+            <tr><td>3D-printed enclosure + figurines</td><td>1</td><td>Bambu Lab P2S</td><td>~$5 filament</td></tr>
+            <tr class="bom-total"><td><strong>Total</strong></td><td></td><td></td><td><strong>~$51-71</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-box">
+        <strong>NOTE:</strong> Magnets must be 6 x 3 mm neodymium discs. Larger magnets will not fit the printed pockets. Buy extras -- you need at least 4 per figurine (2 for the figurine base + 2 for the lid) plus spares for polarity mistakes.
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: GPIO Wiring Reference -->
+  <section class="section" id="gpio" style="background: var(--color-white);">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Pin Reference</span>
+        <h2>GPIO Wiring Reference</h2>
+        <p>All connections use the Raspberry Pi Zero 2 W 40-pin header. SPI must be enabled in raspi-config for the MFRC522. Buttons use internal pull-ups (active low).</p>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead>
+            <tr>
+              <th>Signal</th>
+              <th>Pin</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="pin-dot spi"></span>MFRC522 SDA</td><td>GPIO 8</td><td>SPI0 CE0</td></tr>
+            <tr><td><span class="pin-dot spi"></span>MFRC522 SCK</td><td>GPIO 11</td><td>SPI0 SCLK</td></tr>
+            <tr><td><span class="pin-dot spi"></span>MFRC522 MOSI</td><td>GPIO 10</td><td>SPI0 MOSI</td></tr>
+            <tr><td><span class="pin-dot spi"></span>MFRC522 MISO</td><td>GPIO 9</td><td>SPI0 MISO</td></tr>
+            <tr><td><span class="pin-dot gpio"></span>MFRC522 RST</td><td>GPIO 25</td><td>General GPIO</td></tr>
+            <tr><td><span class="pin-dot power"></span>MFRC522 3.3V</td><td>3.3V</td><td>Pin 1 or 17</td></tr>
+            <tr><td><span class="pin-dot gnd"></span>MFRC522 GND</td><td>GND</td><td>Pin 6, 9, 14, 20, 25, 30, 34, 39</td></tr>
+            <tr><td><span class="pin-dot pwm"></span>WS2812 DIN</td><td>GPIO 18</td><td>PWM0</td></tr>
+            <tr><td><span class="pin-dot power"></span>WS2812 5V</td><td>5V</td><td>Pin 2 or 4</td></tr>
+            <tr><td><span class="pin-dot gnd"></span>WS2812 GND</td><td>GND</td><td>Any GND pin</td></tr>
+            <tr><td><span class="pin-dot gpio"></span>Play/Pause btn</td><td>GPIO 17</td><td>Internal pull-up</td></tr>
+            <tr><td><span class="pin-dot gpio"></span>Stop button</td><td>GPIO 27</td><td>Internal pull-up</td></tr>
+            <tr><td><span class="pin-dot pwm"></span>Buzzer signal</td><td>GPIO 12</td><td>PWM1</td></tr>
+            <tr><td><span class="pin-dot gnd"></span>Buzzer GND</td><td>GND</td><td>Any GND pin</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GPIO Pin Diagram -->
+      <h3>Pin Diagram (color-coded by function)</h3>
+      <div class="diagram-container reveal">
+        <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" style="max-width: 600px;">
+          <!-- Header background -->
+          <rect x="180" y="20" width="240" height="380" rx="8" fill="#F5F5F0" stroke="#E0E0E0" stroke-width="1"/>
+          <text x="300" y="14" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#2D3436">Raspberry Pi Zero 2 W — 40-Pin Header</text>
+
+          <!-- Pin rows - Left column (odd pins) -->
+          <!-- Pin 1: 3.3V -->
+          <circle cx="240" cy="45" r="11" fill="#FF6464"/>
+          <text x="240" y="49" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">1</text>
+          <text x="225" y="49" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#FF6464" font-weight="600">3.3V</text>
+          <!-- Pin 2: 5V -->
+          <circle cx="360" cy="45" r="11" fill="#FF6464"/>
+          <text x="360" y="49" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">2</text>
+          <text x="375" y="49" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#FF6464" font-weight="600">5V (WS2812)</text>
+
+          <!-- Pin 3: GPIO 2 -->
+          <circle cx="240" cy="63" r="8" fill="#C8C8C8"/>
+          <text x="240" y="66" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">3</text>
+          <!-- Pin 4: 5V -->
+          <circle cx="360" cy="63" r="11" fill="#FF6464"/>
+          <text x="360" y="67" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">4</text>
+          <text x="375" y="67" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#FF6464" font-weight="600">5V</text>
+
+          <!-- Pin 5: GPIO 3 -->
+          <circle cx="240" cy="81" r="8" fill="#C8C8C8"/>
+          <text x="240" y="84" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">5</text>
+          <!-- Pin 6: GND -->
+          <circle cx="360" cy="81" r="11" fill="#505050"/>
+          <text x="360" y="85" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">6</text>
+          <text x="375" y="85" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND (RFID)</text>
+
+          <!-- Pin 7: GPIO 4 -->
+          <circle cx="240" cy="99" r="8" fill="#C8C8C8"/>
+          <text x="240" y="102" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">7</text>
+          <!-- Pin 8: GPIO 14 -->
+          <circle cx="360" cy="99" r="8" fill="#C8C8C8"/>
+          <text x="360" y="102" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">8</text>
+
+          <!-- Pin 9: GND -->
+          <circle cx="240" cy="117" r="11" fill="#505050"/>
+          <text x="240" y="121" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">9</text>
+          <text x="225" y="121" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND (LED)</text>
+          <!-- Pin 10: GPIO 15 -->
+          <circle cx="360" cy="117" r="8" fill="#C8C8C8"/>
+          <text x="360" y="120" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">10</text>
+
+          <!-- Pin 11: GPIO 17 - Play/Pause -->
+          <circle cx="240" cy="135" r="11" fill="#FFC864"/>
+          <text x="240" y="139" text-anchor="middle" font-family="monospace" font-size="8" fill="#333" font-weight="700">11</text>
+          <text x="225" y="139" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#FFA726" font-weight="600">GPIO17 Play</text>
+          <!-- Pin 12: GPIO 18 - WS2812 -->
+          <circle cx="360" cy="135" r="11" fill="#90EE90"/>
+          <text x="360" y="139" text-anchor="middle" font-family="monospace" font-size="8" fill="#333" font-weight="700">12</text>
+          <text x="375" y="139" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#4CAF50" font-weight="600">GPIO18 LED DIN</text>
+
+          <!-- Pin 13: GPIO 27 - Stop -->
+          <circle cx="240" cy="153" r="11" fill="#FFC864"/>
+          <text x="240" y="157" text-anchor="middle" font-family="monospace" font-size="8" fill="#333" font-weight="700">13</text>
+          <text x="225" y="157" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#FFA726" font-weight="600">GPIO27 Stop</text>
+          <!-- Pin 14: GND -->
+          <circle cx="360" cy="153" r="11" fill="#505050"/>
+          <text x="360" y="157" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">14</text>
+          <text x="375" y="157" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND (BTN)</text>
+
+          <!-- Pin 15-16 -->
+          <circle cx="240" cy="171" r="8" fill="#C8C8C8"/>
+          <text x="240" y="174" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">15</text>
+          <circle cx="360" cy="171" r="8" fill="#C8C8C8"/>
+          <text x="360" y="174" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">16</text>
+
+          <!-- Pin 17: 3.3V -->
+          <circle cx="240" cy="189" r="11" fill="#FF6464"/>
+          <text x="240" y="193" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">17</text>
+          <text x="225" y="193" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#FF6464" font-weight="600">3.3V (RFID)</text>
+          <!-- Pin 18 -->
+          <circle cx="360" cy="189" r="8" fill="#C8C8C8"/>
+          <text x="360" y="192" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">18</text>
+
+          <!-- Pin 19: GPIO 10 MOSI -->
+          <circle cx="240" cy="207" r="11" fill="#6495ED"/>
+          <text x="240" y="211" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">19</text>
+          <text x="225" y="211" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#6495ED" font-weight="600">GPIO10 MOSI</text>
+          <!-- Pin 20: GND -->
+          <circle cx="360" cy="207" r="11" fill="#505050"/>
+          <text x="360" y="211" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">20</text>
+          <text x="375" y="211" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND</text>
+
+          <!-- Pin 21: GPIO 9 MISO -->
+          <circle cx="240" cy="225" r="11" fill="#6495ED"/>
+          <text x="240" y="229" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">21</text>
+          <text x="225" y="229" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#6495ED" font-weight="600">GPIO9 MISO</text>
+          <!-- Pin 22: GPIO 25 RST -->
+          <circle cx="360" cy="225" r="11" fill="#FFC864"/>
+          <text x="360" y="229" text-anchor="middle" font-family="monospace" font-size="8" fill="#333" font-weight="700">22</text>
+          <text x="375" y="229" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#FFA726" font-weight="600">GPIO25 RST</text>
+
+          <!-- Pin 23: GPIO 11 SCLK -->
+          <circle cx="240" cy="243" r="11" fill="#6495ED"/>
+          <text x="240" y="247" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">23</text>
+          <text x="225" y="247" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#6495ED" font-weight="600">GPIO11 SCLK</text>
+          <!-- Pin 24: GPIO 8 CE0 -->
+          <circle cx="360" cy="243" r="11" fill="#6495ED"/>
+          <text x="360" y="247" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">24</text>
+          <text x="375" y="247" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#6495ED" font-weight="600">GPIO8 SDA/CE0</text>
+
+          <!-- Pin 25: GND -->
+          <circle cx="240" cy="261" r="11" fill="#505050"/>
+          <text x="240" y="265" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">25</text>
+          <text x="225" y="265" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND</text>
+          <!-- Pin 26 -->
+          <circle cx="360" cy="261" r="8" fill="#C8C8C8"/>
+          <text x="360" y="264" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">26</text>
+
+          <!-- Pins 27-28 (unused) -->
+          <circle cx="240" cy="279" r="8" fill="#C8C8C8"/>
+          <text x="240" y="282" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">27</text>
+          <circle cx="360" cy="279" r="8" fill="#C8C8C8"/>
+          <text x="360" y="282" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">28</text>
+
+          <!-- Pins 29-30 -->
+          <circle cx="240" cy="297" r="8" fill="#C8C8C8"/>
+          <text x="240" y="300" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">29</text>
+          <circle cx="360" cy="297" r="11" fill="#505050"/>
+          <text x="360" y="301" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">30</text>
+          <text x="375" y="301" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND</text>
+
+          <!-- Pins 31-32 -->
+          <circle cx="240" cy="315" r="8" fill="#C8C8C8"/>
+          <text x="240" y="318" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">31</text>
+          <!-- Pin 32: GPIO 12 Buzzer -->
+          <circle cx="360" cy="315" r="11" fill="#90EE90"/>
+          <text x="360" y="319" text-anchor="middle" font-family="monospace" font-size="8" fill="#333" font-weight="700">32</text>
+          <text x="375" y="319" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#4CAF50" font-weight="600">GPIO12 Buzzer</text>
+
+          <!-- Pins 33-34 -->
+          <circle cx="240" cy="333" r="8" fill="#C8C8C8"/>
+          <text x="240" y="336" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">33</text>
+          <circle cx="360" cy="333" r="11" fill="#505050"/>
+          <text x="360" y="337" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">34</text>
+          <text x="375" y="337" text-anchor="start" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND (Buzzer)</text>
+
+          <!-- Pins 35-40 (mostly unused) -->
+          <circle cx="240" cy="351" r="8" fill="#C8C8C8"/>
+          <text x="240" y="354" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">35</text>
+          <circle cx="360" cy="351" r="8" fill="#C8C8C8"/>
+          <text x="360" y="354" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">36</text>
+
+          <circle cx="240" cy="369" r="8" fill="#C8C8C8"/>
+          <text x="240" y="372" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">37</text>
+          <circle cx="360" cy="369" r="8" fill="#C8C8C8"/>
+          <text x="360" y="372" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">38</text>
+
+          <circle cx="240" cy="387" r="11" fill="#505050"/>
+          <text x="240" y="391" text-anchor="middle" font-family="monospace" font-size="8" fill="white" font-weight="700">39</text>
+          <text x="225" y="391" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#505050" font-weight="600">GND</text>
+          <circle cx="360" cy="387" r="8" fill="#C8C8C8"/>
+          <text x="360" y="390" text-anchor="middle" font-family="monospace" font-size="7" fill="#555">40</text>
+        </svg>
+      </div>
+
+      <!-- Pin Legend -->
+      <div class="pin-legend">
+        <span><span class="pin-dot spi"></span>SPI (RFID)</span>
+        <span><span class="pin-dot pwm"></span>PWM (LED/Buzzer)</span>
+        <span><span class="pin-dot gpio"></span>GPIO (Buttons/RST)</span>
+        <span><span class="pin-dot power"></span>Power (3.3V/5V)</span>
+        <span><span class="pin-dot gnd"></span>Ground</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: 3D Printing -->
+  <section class="section" id="printing">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">3D Printing</span>
+        <h2>Printing the Enclosure</h2>
+        <p>The BabyBox has three printed parts: the enclosure body, the lid, and figurine bases. All parts are designed in OpenSCAD and printed on a Bambu Lab P2S (or any FDM printer with a 256 x 256 mm bed).</p>
+      </div>
+
+      <h3>Recommended Print Settings</h3>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead>
+            <tr><th>Parameter</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Material</td><td>PETG</td></tr>
+            <tr><td>Nozzle</td><td>0.4 mm</td></tr>
+            <tr><td>Layer Height</td><td>0.2 mm</td></tr>
+            <tr><td>Infill</td><td>20%</td></tr>
+            <tr><td>Perimeters</td><td>3</td></tr>
+            <tr><td>Top Layers</td><td>5</td></tr>
+            <tr><td>Bottom Layers</td><td>4</td></tr>
+            <tr><td>Supports</td><td>None (designed support-free)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Part A: Enclosure Body</h3>
+      <p>Dimensions: 150 x 110 x 63 mm (body height without lid). Wall thickness: 3 mm. Corner radius: 5 mm. Floor thickness: 3 mm.</p>
+      <ul>
+        <li>Print UPRIGHT (open top facing up). No supports needed.</li>
+        <li>The breadboard bay is a recess in the floor -- prints as part of the body.</li>
+        <li>Four M3 screw posts at the corners accept screws from the lid.</li>
+        <li>Button holes (12 mm dia) and LED window (55 mm wide) are on the front wall.</li>
+        <li>Port cutouts (mini-HDMI, 2x micro-USB, microSD) are on the back/side walls.</li>
+      </ul>
+
+      <!-- Enclosure Top View Diagram -->
+      <div class="diagram-container reveal">
+        <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" style="max-width: 500px;">
+          <text x="250" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#2D3436">Enclosure Body — Top View</text>
+          <!-- Outer walls -->
+          <rect x="50" y="35" width="400" height="295" rx="14" fill="#FFF8F0" stroke="#2D3436" stroke-width="2.5"/>
+          <!-- Inner cavity -->
+          <rect x="58" y="43" width="384" height="279" rx="10" fill="white" stroke="#E8E0D8" stroke-width="1"/>
+          <!-- Dimensions -->
+          <text x="250" y="350" text-anchor="middle" font-family="monospace" font-size="10" fill="#636E72">150 mm</text>
+          <line x1="50" y1="340" x2="450" y2="340" stroke="#636E72" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <text x="470" y="182" text-anchor="middle" font-family="monospace" font-size="10" fill="#636E72" transform="rotate(90 470 182)">110 mm</text>
+          <!-- Screw posts -->
+          <circle cx="72" cy="55" r="6" fill="#E8E0D8" stroke="#636E72" stroke-width="1"/>
+          <circle cx="428" cy="55" r="6" fill="#E8E0D8" stroke="#636E72" stroke-width="1"/>
+          <circle cx="72" cy="310" r="6" fill="#E8E0D8" stroke="#636E72" stroke-width="1"/>
+          <circle cx="428" cy="310" r="6" fill="#E8E0D8" stroke="#636E72" stroke-width="1"/>
+          <!-- Pi Zero 2 W -->
+          <rect x="80" y="200" width="160" height="90" rx="4" fill="#2D8B4E" fill-opacity="0.15" stroke="#2D8B4E" stroke-width="1.5"/>
+          <text x="160" y="250" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#2D8B4E" font-weight="600">Raspberry Pi Zero 2 W</text>
+          <!-- GPIO header on Pi -->
+          <rect x="90" y="210" width="100" height="6" rx="1" fill="#FFC864" fill-opacity="0.5" stroke="#FFA726" stroke-width="0.5"/>
+          <!-- Breadboard bay -->
+          <rect x="270" y="110" width="160" height="110" rx="4" fill="#6C63FF" fill-opacity="0.08" stroke="#6C63FF" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <text x="350" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#6C63FF" font-weight="600">Breadboard Bay</text>
+          <!-- Buzzer cradle -->
+          <circle cx="400" cy="270" r="16" fill="#FFE66D" fill-opacity="0.2" stroke="#FFE66D" stroke-width="1.5"/>
+          <text x="400" y="274" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#636E72" font-weight="600">Buzzer</text>
+          <!-- Front wall features -->
+          <!-- Button holes -->
+          <circle cx="180" cy="43" r="8" fill="#FF6B6B" fill-opacity="0.2" stroke="#FF6B6B" stroke-width="1.5"/>
+          <text x="180" y="35" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#FF6B6B">Play</text>
+          <circle cx="240" cy="43" r="8" fill="#FF6B6B" fill-opacity="0.2" stroke="#FF6B6B" stroke-width="1.5"/>
+          <text x="240" y="35" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#FF6B6B">Stop</text>
+          <!-- LED window -->
+          <rect x="280" y="37" width="100" height="12" rx="3" fill="#4ECDC4" fill-opacity="0.2" stroke="#4ECDC4" stroke-width="1.5"/>
+          <text x="330" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#4ECDC4">LED Window</text>
+          <!-- Back wall ports -->
+          <rect x="100" y="322" width="20" height="8" rx="2" fill="#636E72" fill-opacity="0.3" stroke="#636E72" stroke-width="1"/>
+          <text x="110" y="344" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" fill="#636E72">HDMI</text>
+          <rect x="140" y="322" width="14" height="8" rx="2" fill="#636E72" fill-opacity="0.3" stroke="#636E72" stroke-width="1"/>
+          <text x="147" y="344" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" fill="#636E72">USB</text>
+          <rect x="170" y="322" width="14" height="8" rx="2" fill="#636E72" fill-opacity="0.3" stroke="#636E72" stroke-width="1"/>
+          <text x="177" y="344" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" fill="#636E72">PWR</text>
+          <text x="250" y="368" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#636E72" font-style="italic">Front wall (top) / Back wall (bottom)</text>
+        </svg>
+      </div>
+
+      <h3>Part B: Enclosure Lid</h3>
+      <p>Dimensions: 150 x 110 x 12 mm. The lid has a 3 mm nesting lip that fits inside the body opening.</p>
+      <ul>
+        <li>Print UPSIDE-DOWN (top surface on the build plate for a smooth finish).</li>
+        <li>RFID module (MFRC522) mounts on standoffs hanging from the ceiling.</li>
+        <li>Two magnet bosses enclose the neodymium magnets (see Magnets section).</li>
+        <li>A 36 mm engraved ring on the top surface marks the figurine placement zone.</li>
+        <li>Four M3 clearance holes at the corners align with the body screw posts.</li>
+      </ul>
+
+      <!-- Lid Bottom View Diagram -->
+      <div class="diagram-container reveal">
+        <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg" style="max-width: 500px;">
+          <text x="250" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#2D3436">Lid — Bottom View (looking up into lid)</text>
+          <!-- Outer lid -->
+          <rect x="50" y="35" width="400" height="280" rx="14" fill="#FFF8F0" stroke="#2D3436" stroke-width="2.5"/>
+          <!-- Screw holes -->
+          <circle cx="72" cy="55" r="5" fill="none" stroke="#636E72" stroke-width="1.5"/>
+          <circle cx="428" cy="55" r="5" fill="none" stroke="#636E72" stroke-width="1.5"/>
+          <circle cx="72" cy="295" r="5" fill="none" stroke="#636E72" stroke-width="1.5"/>
+          <circle cx="428" cy="295" r="5" fill="none" stroke="#636E72" stroke-width="1.5"/>
+          <!-- MFRC522 module -->
+          <rect x="170" y="115" width="160" height="110" rx="4" fill="#6495ED" fill-opacity="0.12" stroke="#6495ED" stroke-width="1.5"/>
+          <text x="250" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#6495ED" font-weight="600">MFRC522 RFID Module</text>
+          <text x="250" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#6495ED">60 x 40 mm</text>
+          <!-- Standoff dots -->
+          <circle cx="178" cy="123" r="3" fill="#6495ED" fill-opacity="0.4"/>
+          <circle cx="322" cy="123" r="3" fill="#6495ED" fill-opacity="0.4"/>
+          <circle cx="178" cy="217" r="3" fill="#6495ED" fill-opacity="0.4"/>
+          <circle cx="322" cy="217" r="3" fill="#6495ED" fill-opacity="0.4"/>
+          <!-- Magnet bosses -->
+          <circle cx="220" cy="80" r="10" fill="#FF6B6B" fill-opacity="0.15" stroke="#FF6B6B" stroke-width="1.5"/>
+          <text x="220" y="83" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" fill="#FF6B6B" font-weight="600">MAG</text>
+          <circle cx="280" cy="80" r="10" fill="#FF6B6B" fill-opacity="0.15" stroke="#FF6B6B" stroke-width="1.5"/>
+          <text x="280" y="83" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" fill="#FF6B6B" font-weight="600">MAG</text>
+          <!-- Figurine ring -->
+          <circle cx="250" cy="175" r="48" fill="none" stroke="#4ECDC4" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="250" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#4ECDC4" font-weight="600">Figurine Ring (36mm dia)</text>
+          <!-- Nesting lip -->
+          <rect x="58" y="43" width="384" height="264" rx="10" fill="none" stroke="#B0B0B8" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="420" y="56" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="#B0B0B8">nesting lip</text>
+        </svg>
+      </div>
+
+      <h3>Part C: Figurine Base</h3>
+      <p>Diameter: 35 mm. Height: 6 mm. Chamfer: 0.8 mm on the bottom edge. All figurines share the same base for consistent magnet alignment.</p>
+      <ul>
+        <li>Print RIGHT-SIDE UP (flat bottom on build plate).</li>
+        <li>Two magnet pockets (6.3 mm dia, 3.2 mm deep) spaced 20 mm apart.</li>
+        <li>Shallow RFID recess (25.5 mm dia, 0.5 mm deep) on the bottom face.</li>
+        <li>Magnets inserted via pause-and-insert at Z = 4.2 mm (see Magnets section).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4: Hidden Magnet Insertion -->
+  <section class="section" id="magnets" style="background: var(--color-white);">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Critical Step</span>
+        <h2>Hidden Magnet Insertion</h2>
+        <p>The pause-and-insert technique fully encloses each magnet inside solid plastic with no access points.</p>
+      </div>
+
+      <div class="warning-box">
+        <strong>WARNING:</strong> Neodymium magnets are extremely dangerous if swallowed by a child. The pause-and-insert technique fully encloses each magnet inside solid plastic with no access points. NEVER leave magnets accessible. Always verify the seal layers printed correctly after resuming.
+      </div>
+
+      <p>Both the lid and figurine bases use the same technique: the print is paused at a specific Z height, magnets are dropped into the open cavities, and printing resumes to seal them with solid layers above.</p>
+
+      <h3>Pause Heights</h3>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead>
+            <tr><th>Part</th><th>Pause Z</th><th>Seal Below</th><th>Cavity</th><th>Seal Above</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Figurine base (right-side up)</td>
+              <td>4.2 mm</td>
+              <td>1.0 mm</td>
+              <td>3.2 mm</td>
+              <td>1.8 mm</td>
+            </tr>
+            <tr>
+              <td>Lid (upside-down)</td>
+              <td>4.2 mm</td>
+              <td>1.0 mm</td>
+              <td>3.2 mm</td>
+              <td>~2.0 mm (top wall)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Step-by-Step Procedure</h3>
+      <ol>
+        <li>Slice the part in Bambu Studio and add a pause (M600) at the target Z height. For both figurine bases and the lid, pause at Z = 4.2 mm.</li>
+        <li>Start the print. When the printer pauses, the cavities will be open cylinders with a solid floor of 1.0 mm below.</li>
+        <li>Check magnet polarity BEFORE inserting! Use a reference magnet taped to the build plate with the correct pole facing up. Each new magnet must ATTRACT the reference (i.e., opposite poles face each other).</li>
+        <li>Drop one magnet into each cavity. It should sit flush or slightly below the rim. If it sticks up, the pocket depth is wrong -- do not continue.</li>
+        <li>Resume the print. The printer will lay solid layers over the magnets, permanently sealing them inside.</li>
+        <li>After the print completes, verify the top surface is smooth and fully sealed. Try to feel or pry out the magnets -- you should not be able to.</li>
+      </ol>
+
+      <!-- Cross-Section Diagram -->
+      <h3>Figurine Base Cross-Section</h3>
+      <div class="diagram-container reveal">
+        <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg" style="max-width: 480px;">
+          <!-- Base outline -->
+          <rect x="80" y="30" width="320" height="100" rx="4" fill="#FFF8F0" stroke="#2D3436" stroke-width="2"/>
+          <!-- Seal floor (bottom 1mm) -->
+          <rect x="80" y="113" width="320" height="17" rx="0" fill="#E8E0D8" stroke="none"/>
+          <text x="60" y="125" text-anchor="end" font-family="monospace" font-size="8" fill="#636E72">1.0mm</text>
+          <text x="60" y="125" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="#636E72"></text>
+          <!-- Magnet cavities -->
+          <rect x="160" y="62" width="50" height="51" rx="2" fill="#FF6B6B" fill-opacity="0.2" stroke="#FF6B6B" stroke-width="1.5"/>
+          <text x="185" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#FF6B6B" font-weight="600">N</text>
+          <rect x="270" y="62" width="50" height="51" rx="2" fill="#6495ED" fill-opacity="0.2" stroke="#6495ED" stroke-width="1.5"/>
+          <text x="295" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#6495ED" font-weight="600">S</text>
+          <!-- Seal above -->
+          <rect x="80" y="30" width="320" height="32" fill="#E8E0D8" fill-opacity="0.5"/>
+          <text x="60" y="50" text-anchor="end" font-family="monospace" font-size="8" fill="#636E72">1.8mm</text>
+          <!-- Pause line -->
+          <line x1="75" y1="62" x2="405" y2="62" stroke="#FF6B6B" stroke-width="1" stroke-dasharray="4 2"/>
+          <text x="420" y="66" font-family="Inter, sans-serif" font-size="8" fill="#FF6B6B" font-weight="600">PAUSE 4.2mm</text>
+          <!-- Labels -->
+          <text x="240" y="48" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Seal Above</text>
+          <text x="240" y="125" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Seal Floor</text>
+          <!-- RFID recess on bottom -->
+          <rect x="140" y="130" width="200" height="5" rx="1" fill="#4ECDC4" fill-opacity="0.3" stroke="#4ECDC4" stroke-width="0.5"/>
+          <text x="240" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#4ECDC4">RFID sticker recess (25.5mm)</text>
+          <!-- Dimension markers -->
+          <text x="240" y="168" text-anchor="middle" font-family="monospace" font-size="9" fill="#636E72">35 mm diameter x 6 mm height</text>
+        </svg>
+      </div>
+
+      <h3>Polarity Reference</h3>
+      <p>All magnets in the BabyBox must have matching polarity so figurine magnets ATTRACT the lid magnets. Use this system:</p>
+      <ol>
+        <li>Mark one magnet with a dot of paint on its NORTH face. This is your reference.</li>
+        <li>When inserting magnets into the LID (printed upside-down), place them with the NORTH (dotted) face UP (toward you, away from the build plate).</li>
+        <li>When inserting magnets into FIGURINE BASES, place them with the SOUTH (un-dotted) face UP.</li>
+        <li>Test: after both parts are printed, place the figurine on the lid. The magnets should snap together firmly.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Section 5: Electronics Mounting -->
+  <section class="section" id="mounting">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Component Mounting</span>
+        <h2>Electronics Mounting</h2>
+        <p>Mount each component in the enclosure before wiring. Follow the order below for easiest assembly.</p>
+      </div>
+
+      <div class="component-section reveal">
+        <h3>Raspberry Pi Zero 2 W</h3>
+        <p>The Pi mounts on four M2.5 standoffs (5 mm tall) near the back-left corner of the enclosure body. Use M2.5 x 6 mm screws from above.</p>
+        <ul>
+          <li>Ports face the back wall: mini-HDMI, 2x micro-USB (OTG + power).</li>
+          <li>The microSD slot faces the left side wall.</li>
+          <li>Ensure the Pi sits level and does not contact the floor (standoffs provide clearance).</li>
+          <li>Flash Raspberry Pi OS Lite to the SD card before mounting.</li>
+        </ul>
+      </div>
+
+      <div class="component-section reveal">
+        <h3>MFRC522 RFID Module</h3>
+        <p>The MFRC522 mounts on four M2 standoffs hanging from the lid ceiling, centered on the lid. The antenna faces upward toward the figurine placement zone.</p>
+        <ul>
+          <li>Module dimensions: 60 x 40 x 4 mm (8 mm with header pins).</li>
+          <li>Mounting holes: M2, spaced 56 x 36 mm.</li>
+          <li>Use M2 x 8 mm screws from below (through the standoffs into the module).</li>
+          <li>The module must sit as close to the lid's inner ceiling as possible for best read range.</li>
+          <li>Total distance to figurine RFID tag: ~3 mm wall + ~5 mm figurine base = ~8 mm (well within the 30 mm read range).</li>
+        </ul>
+      </div>
+
+      <div class="component-section reveal">
+        <h3>Half Breadboard</h3>
+        <p>A half-size breadboard (82 x 55 mm) sits in a recessed bay in the enclosure floor. This provides a prototyping area for wiring without soldering.</p>
+        <ul>
+          <li>The bay is 83 x 56 mm (with 0.5 mm tolerance per side).</li>
+          <li>The breadboard sits flush with the floor surface.</li>
+          <li>Peel off the adhesive backing and press into the bay, or leave it friction-fit.</li>
+        </ul>
+      </div>
+
+      <div class="component-section reveal">
+        <h3>Buttons</h3>
+        <p>Two 6x6 mm tactile buttons mount through 12 mm holes in the front wall. Use button caps (12 mm round) for a toddler-friendly surface.</p>
+        <ul>
+          <li>Left button (Play/Pause): GPIO 17, with internal pull-up.</li>
+          <li>Right button (Stop): GPIO 27, with internal pull-up.</li>
+          <li>Buttons are spaced 60 mm apart, centered on the front wall.</li>
+          <li>Wire one leg to the GPIO pin and the opposite leg to GND.</li>
+        </ul>
+      </div>
+
+      <div class="component-section reveal">
+        <h3>WS2812 LED Strip</h3>
+        <p>An 8-LED WS2812 strip (51 x 10 mm) mounts behind the LED window on the front wall. The LEDs shine outward through the window slot.</p>
+        <ul>
+          <li>Window dimensions: 55 mm wide x 12 mm tall.</li>
+          <li>A 5 mm deep channel behind the window holds the strip.</li>
+          <li>Adhere the strip with its self-adhesive backing, LEDs facing outward.</li>
+          <li>DIN connects to GPIO 18 (PWM0). 5V and GND to the Pi header.</li>
+        </ul>
+      </div>
+
+      <div class="component-section reveal">
+        <h3>Passive Buzzer</h3>
+        <p>A 12 mm passive buzzer sits in a ring cradle in the back-right corner of the floor.</p>
+        <ul>
+          <li>Cradle outer diameter: 15 mm, inner: 12.4 mm.</li>
+          <li>Signal pin connects to GPIO 12 (PWM1). GND to any ground pin.</li>
+          <li>Passive buzzers require a PWM signal to produce tones (unlike active buzzers).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Wiring Guide -->
+  <section class="section" id="wiring" style="background: var(--color-white);">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Wiring</span>
+        <h2>Wiring Guide</h2>
+        <p>All wiring goes through the half breadboard. Use jumper wires (male-to-female for the Pi header, male-to-male for the breadboard).</p>
+      </div>
+
+      <!-- Wiring Overview Diagram -->
+      <div class="diagram-container reveal">
+        <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" style="max-width: 680px;">
+          <text x="340" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#2D3436">Wiring Overview</text>
+
+          <!-- Central Pi -->
+          <rect x="230" y="150" width="200" height="120" rx="8" fill="#2D8B4E" fill-opacity="0.12" stroke="#2D8B4E" stroke-width="2"/>
+          <text x="330" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#2D8B4E" font-weight="700">Raspberry Pi Zero 2 W</text>
+          <text x="330" y="212" text-anchor="middle" font-family="monospace" font-size="9" fill="#2D8B4E">40-pin GPIO Header</text>
+
+          <!-- SPI pins label on Pi -->
+          <text x="248" y="240" font-family="monospace" font-size="7" fill="#6495ED">SPI0: 8,9,10,11,25</text>
+          <!-- PWM pins label -->
+          <text x="340" y="240" font-family="monospace" font-size="7" fill="#4CAF50">PWM: 12,18</text>
+          <!-- GPIO pins label -->
+          <text x="248" y="252" font-family="monospace" font-size="7" fill="#FFA726">GPIO: 17,27</text>
+
+          <!-- MFRC522 Box (left) -->
+          <rect x="20" y="130" width="140" height="80" rx="6" fill="#6495ED" fill-opacity="0.1" stroke="#6495ED" stroke-width="1.5"/>
+          <text x="90" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#6495ED" font-weight="700">MFRC522 RFID</text>
+          <text x="90" y="180" text-anchor="middle" font-family="monospace" font-size="8" fill="#6495ED">7 wires (SPI)</text>
+          <!-- 7 wires from MFRC522 to Pi -->
+          <line x1="160" y1="155" x2="230" y2="175" stroke="#DCA800" stroke-width="1.5"/>
+          <line x1="160" y1="160" x2="230" y2="180" stroke="#E07800" stroke-width="1.5"/>
+          <line x1="160" y1="165" x2="230" y2="185" stroke="#28A028" stroke-width="1.5"/>
+          <line x1="160" y1="170" x2="230" y2="190" stroke="#2850C8" stroke-width="1.5"/>
+          <line x1="160" y1="175" x2="230" y2="195" stroke="#B4B4B4" stroke-width="1.5"/>
+          <line x1="160" y1="180" x2="230" y2="200" stroke="#DC2828" stroke-width="1.5"/>
+          <line x1="160" y1="185" x2="230" y2="205" stroke="#282828" stroke-width="1.5"/>
+
+          <!-- WS2812 LED Strip (top right) -->
+          <rect x="500" y="60" width="150" height="60" rx="6" fill="#4ECDC4" fill-opacity="0.1" stroke="#4ECDC4" stroke-width="1.5"/>
+          <text x="575" y="85" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#4ECDC4" font-weight="700">WS2812 LED Strip</text>
+          <text x="575" y="100" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ECDC4">3 wires (DIN, 5V, GND)</text>
+          <!-- LED dots -->
+          <circle cx="515" cy="108" r="3" fill="#4ECDC4"/>
+          <circle cx="525" cy="108" r="3" fill="#6C63FF"/>
+          <circle cx="535" cy="108" r="3" fill="#FF6B6B"/>
+          <circle cx="545" cy="108" r="3" fill="#FFE66D"/>
+          <circle cx="555" cy="108" r="3" fill="#4ECDC4"/>
+          <circle cx="565" cy="108" r="3" fill="#6C63FF"/>
+          <circle cx="575" cy="108" r="3" fill="#FF6B6B"/>
+          <circle cx="585" cy="108" r="3" fill="#FFE66D"/>
+          <!-- 3 wires -->
+          <line x1="500" y1="80" x2="430" y2="165" stroke="#28A028" stroke-width="1.5"/>
+          <line x1="500" y1="85" x2="430" y2="170" stroke="#DC2828" stroke-width="1.5"/>
+          <line x1="500" y1="90" x2="430" y2="175" stroke="#282828" stroke-width="1.5"/>
+
+          <!-- Buttons (right middle) -->
+          <rect x="500" y="180" width="150" height="80" rx="6" fill="#FFC864" fill-opacity="0.1" stroke="#FFC864" stroke-width="1.5"/>
+          <text x="575" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#FFA726" font-weight="700">Tactile Buttons</text>
+          <text x="575" y="225" text-anchor="middle" font-family="monospace" font-size="8" fill="#FFA726">Play: GPIO17</text>
+          <text x="575" y="237" text-anchor="middle" font-family="monospace" font-size="8" fill="#FFA726">Stop: GPIO27</text>
+          <!-- Button circles -->
+          <circle cx="540" cy="250" r="6" fill="none" stroke="#FFA726" stroke-width="1.5"/>
+          <circle cx="565" cy="250" r="6" fill="none" stroke="#FFA726" stroke-width="1.5"/>
+          <!-- 4 wires -->
+          <line x1="500" y1="205" x2="430" y2="195" stroke="#FFA726" stroke-width="1.5"/>
+          <line x1="500" y1="210" x2="430" y2="200" stroke="#FFA726" stroke-width="1.5"/>
+          <line x1="500" y1="220" x2="430" y2="210" stroke="#282828" stroke-width="1.5"/>
+          <line x1="500" y1="225" x2="430" y2="215" stroke="#282828" stroke-width="1.5"/>
+
+          <!-- Buzzer (bottom right) -->
+          <rect x="500" y="310" width="150" height="60" rx="6" fill="#90EE90" fill-opacity="0.15" stroke="#90EE90" stroke-width="1.5"/>
+          <text x="575" y="335" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#4CAF50" font-weight="700">Passive Buzzer</text>
+          <text x="575" y="350" text-anchor="middle" font-family="monospace" font-size="8" fill="#4CAF50">2 wires (GPIO12, GND)</text>
+          <!-- 2 wires -->
+          <line x1="500" y1="330" x2="430" y2="250" stroke="#DCA800" stroke-width="1.5"/>
+          <line x1="500" y1="340" x2="430" y2="255" stroke="#282828" stroke-width="1.5"/>
+
+          <!-- Bottom: Audio + Video output -->
+          <rect x="180" y="320" width="120" height="50" rx="6" fill="#6C63FF" fill-opacity="0.08" stroke="#6C63FF" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="240" y="345" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6C63FF" font-weight="600">Bluetooth Audio</text>
+          <text x="240" y="358" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#636E72">A2DP to Speaker</text>
+          <path d="M290 310 Q290 298 300 290" stroke="#6C63FF" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
+
+          <rect x="340" y="320" width="100" height="50" rx="6" fill="#636E72" fill-opacity="0.08" stroke="#636E72" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="390" y="345" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#636E72" font-weight="600">HDMI Video</text>
+          <text x="390" y="358" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Mini-HDMI to TV</text>
+          <path d="M370 310 Q370 298 360 290" stroke="#636E72" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
+
+          <!-- Wire color legend -->
+          <rect x="20" y="400" width="640" height="55" rx="6" fill="#F5F5F0" stroke="#E0E0E0" stroke-width="1"/>
+          <text x="40" y="420" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#2D3436">Wire Colors:</text>
+          <line x1="40" y1="435" x2="55" y2="435" stroke="#DCA800" stroke-width="2.5"/><text x="60" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Yellow (SDA/Signal)</text>
+          <line x1="170" y1="435" x2="185" y2="435" stroke="#E07800" stroke-width="2.5"/><text x="190" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Orange (SCK)</text>
+          <line x1="280" y1="435" x2="295" y2="435" stroke="#28A028" stroke-width="2.5"/><text x="300" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Green (MOSI/DIN)</text>
+          <line x1="420" y1="435" x2="435" y2="435" stroke="#2850C8" stroke-width="2.5"/><text x="440" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Blue (MISO)</text>
+          <line x1="520" y1="435" x2="535" y2="435" stroke="#DC2828" stroke-width="2.5"/><text x="540" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Red (Power)</text>
+          <line x1="610" y1="435" x2="625" y2="435" stroke="#282828" stroke-width="2.5"/><text x="630" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Black (GND)</text>
+        </svg>
+      </div>
+
+      <h3>MFRC522 RFID Module (7 wires)</h3>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead><tr><th>MFRC522 Pin</th><th>Wire Color</th><th>Pi Header Pin</th></tr></thead>
+          <tbody>
+            <tr><td>SDA</td><td class="wire-yellow">Yellow</td><td>GPIO 8 (Pin 24, CE0)</td></tr>
+            <tr><td>SCK</td><td class="wire-orange">Orange</td><td>GPIO 11 (Pin 23, SCLK)</td></tr>
+            <tr><td>MOSI</td><td class="wire-green">Green</td><td>GPIO 10 (Pin 19, MOSI)</td></tr>
+            <tr><td>MISO</td><td class="wire-blue">Blue</td><td>GPIO 9 (Pin 21, MISO)</td></tr>
+            <tr><td>RST</td><td class="wire-white">White</td><td>GPIO 25 (Pin 22)</td></tr>
+            <tr><td>3.3V</td><td class="wire-red">Red</td><td>3.3V (Pin 1 or 17)</td></tr>
+            <tr><td>GND</td><td class="wire-black">Black</td><td>GND (Pin 6)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning-box">
+        <strong>WARNING:</strong> The MFRC522 operates at 3.3V. NEVER connect it to 5V -- this will permanently damage the module.
+      </div>
+
+      <h3>WS2812 LED Strip (3 wires)</h3>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead><tr><th>LED Pin</th><th>Wire Color</th><th>Pi Header Pin</th></tr></thead>
+          <tbody>
+            <tr><td>DIN</td><td class="wire-green">Green</td><td>GPIO 18 (Pin 12, PWM0)</td></tr>
+            <tr><td>5V</td><td class="wire-red">Red</td><td>5V (Pin 2 or 4)</td></tr>
+            <tr><td>GND</td><td class="wire-black">Black</td><td>GND (Pin 9)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Buttons (4 wires total)</h3>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead><tr><th>Button</th><th>Leg A</th><th>Leg B</th></tr></thead>
+          <tbody>
+            <tr><td>Play/Pause</td><td>GPIO 17 (Pin 11)</td><td>GND (Pin 14)</td></tr>
+            <tr><td>Stop</td><td>GPIO 27 (Pin 13)</td><td>GND (Pin 14 or 20)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>No external pull-up resistors needed -- the software enables internal pull-ups.</p>
+
+      <h3>Passive Buzzer (2 wires)</h3>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead><tr><th>Buzzer Pin</th><th>Wire Color</th><th>Pi Header Pin</th></tr></thead>
+          <tbody>
+            <tr><td>Signal (+)</td><td class="wire-yellow">Yellow</td><td>GPIO 12 (Pin 32, PWM1)</td></tr>
+            <tr><td>GND (-)</td><td class="wire-black">Black</td><td>GND (Pin 34)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-box">
+        <strong>NOTE:</strong> Route wires neatly and keep them away from the RFID antenna area in the lid. Loose wires near the MFRC522 can cause interference and reduce read range.
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Figurine Construction -->
+  <section class="section" id="figurines">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Figurines</span>
+        <h2>Figurine Construction</h2>
+        <p>Each figurine is a 3D-printed character with embedded magnets and an RFID sticker, built on a standardized base.</p>
+      </div>
+
+      <h3>Base Printing</h3>
+      <p>All figurines share a standard base: 35 mm diameter, 6 mm tall. The base has two magnet pockets (6.3 mm dia, 3.2 mm deep) spaced 20 mm apart, and a shallow RFID recess (25.5 mm dia) on the bottom.</p>
+      <ol>
+        <li>Open <code>hardware/figurines/base-template.scad</code> in OpenSCAD.</li>
+        <li>Set <code>render_part = "base"</code> and press F6 to render.</li>
+        <li>Export as STL. Import into Bambu Studio.</li>
+        <li>Use PETG, 0.2 mm layer height, 20% infill.</li>
+        <li>Add a pause at Z = 4.2 mm for magnet insertion.</li>
+        <li>Print right-side up (flat bottom on bed).</li>
+      </ol>
+
+      <h3>RFID Sticker Application</h3>
+      <ol>
+        <li>Take a 25 mm MIFARE 13.56 MHz coin sticker.</li>
+        <li>Peel off the backing to expose the adhesive.</li>
+        <li>Center the sticker on the BOTTOM face of the figurine base, inside the shallow recess (25.5 mm dia).</li>
+        <li>Press firmly. The sticker should sit flush in the recess.</li>
+        <li>Test: hold the base near the MFRC522 module. The tag UID should be read successfully at up to ~25 mm distance.</li>
+      </ol>
+
+      <h3>Figurine Top (Decorative Shell)</h3>
+      <p>The top part of each figurine is the decorative character or object that the child interacts with. There are two approaches:</p>
+
+      <h4>Option A: AI-Generated (Meshy AI + Blender)</h4>
+      <ol>
+        <li>Go to meshy.ai and generate a 3D model from a text prompt (e.g., "cute cartoon dinosaur, low poly, smooth").</li>
+        <li>Download the model as OBJ or GLB.</li>
+        <li>Open Blender. Import the Meshy model and the figurine base STL.</li>
+        <li>Position the decorative top on top of the base. Boolean-union them together.</li>
+        <li>Verify the magnet pockets and RFID recess are not obstructed.</li>
+        <li>Export as STL. Slice in Bambu Studio and print.</li>
+      </ol>
+
+      <h4>Option B: Simple Geometric Shape (OpenSCAD)</h4>
+      <p>For simpler figurines, you can add a geometric top directly in OpenSCAD (cylinder, sphere, cone, etc.) on top of the base template.</p>
+
+      <h3>Figurine Design Guidelines</h3>
+      <ul>
+        <li>Total height: 40-60 mm (base + top). Easy for toddler hands.</li>
+        <li>Base diameter: 35 mm (standardized for magnet alignment).</li>
+        <li>No small detachable parts. Everything is one solid piece after assembly.</li>
+        <li>Bright colors. Multi-color prints possible with Bambu AMS.</li>
+        <li>Minimal overhangs to avoid supports.</li>
+        <li>Test each figurine on the box before giving to the child.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 8: Final Assembly Sequence -->
+  <section class="section" id="assembly" style="background: var(--color-white);">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Assembly</span>
+        <h2>Final Assembly Sequence</h2>
+        <p>Follow these steps in order to assemble a complete BabyBox from printed parts and electronics.</p>
+      </div>
+
+      <div class="guide-timeline reveal">
+        <div class="guide-timeline-step" data-step="1">
+          <h4>Print the enclosure BODY (Part A)</h4>
+          <p>Inspect for clean button holes, LED window, port cutouts, and screw posts.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="2">
+          <h4>Print the enclosure LID (Part B) upside-down</h4>
+          <p>Pause at Z = 4.2 mm and insert 2x magnets (NORTH face up). Resume and let it complete.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="3">
+          <h4>Print at least 2 figurine BASES (Part C)</h4>
+          <p>Pause at Z = 4.2 mm and insert 2x magnets per base (SOUTH face up). Resume and complete.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="4">
+          <h4>Test magnet polarity</h4>
+          <p>Place a figurine base on the lid. The magnets should snap together firmly and align the base over the engraved ring.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="5">
+          <h4>Mount the Raspberry Pi Zero 2 W</h4>
+          <p>Use 4x M2.5 screws on standoffs in the body. Ports face the back wall.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="6">
+          <h4>Mount the MFRC522 RFID module</h4>
+          <p>Use 4x M2 screws on standoffs under the lid ceiling. Antenna faces upward.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="7">
+          <h4>Place the half breadboard</h4>
+          <p>Press into the floor recess to seat it.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="8">
+          <h4>Wire the MFRC522 to the Pi header</h4>
+          <p>7 wires: SDA, SCK, MOSI, MISO, RST, 3.3V, GND. Route wires through the breadboard.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="9">
+          <h4>Wire the WS2812 LED strip</h4>
+          <p>DIN to GPIO 18, 5V, GND. Adhere the strip behind the LED window with LEDs facing outward.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="10">
+          <h4>Wire the two buttons</h4>
+          <p>Play/Pause to GPIO 17 + GND, Stop to GPIO 27 + GND. Mount through the front wall holes with caps.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="11">
+          <h4>Wire the passive buzzer</h4>
+          <p>Signal to GPIO 12, GND. Seat it in the back-right cradle.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="12">
+          <h4>Flash Raspberry Pi OS Lite</h4>
+          <p>Flash to the microSD card. Insert it into the Pi.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="13">
+          <h4>Power on and test</h4>
+          <p>Connect a 5V 3A micro-USB power supply to the Pi's power port (the one further from the HDMI port). Verify the Pi boots.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="14">
+          <h4>Close the enclosure</h4>
+          <p>Place the lid on the body. Align the nesting lip and screw posts. Secure with 4x M3 screws at the corners.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="15">
+          <h4>Attach figurine RFID stickers</h4>
+          <p>Center stickers on figurine base bottoms. Glue or attach decorative tops to the bases.</p>
+        </div>
+        <div class="guide-timeline-step" data-step="16">
+          <h4>Final test</h4>
+          <p>Place a figurine on the lid. The RFID tag should be read, the LEDs should animate, and media should play. Connect a Bluetooth speaker and verify audio routing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: Safety Notes -->
+  <section class="section" id="safety">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Safety</span>
+        <h2>Safety Notes</h2>
+        <p>This device is intended for toddlers (ages 1-4). Review all points below before allowing a child to use the BabyBox.</p>
+      </div>
+
+      <div class="warning-box">
+        <strong>WARNING:</strong> This device is intended for toddlers (ages 1-4). Safety is paramount. Review all points below before allowing a child to use the BabyBox.
+      </div>
+
+      <div class="component-section">
+        <h3>Magnet Safety</h3>
+        <ul>
+          <li>ALL magnets MUST be fully enclosed inside 3D-printed plastic using the pause-and-insert technique. No magnets should be accessible.</li>
+          <li>After printing, verify the seal: the top surface should be smooth and continuous with no visible cavities or holes.</li>
+          <li>If a print fails mid-seal (power outage, filament runout), DISCARD the part. Do not use it with exposed magnets.</li>
+          <li>Neodymium magnets are extremely dangerous if swallowed. Two magnets swallowed separately can attract through intestinal walls, causing perforation, obstruction, or death.</li>
+          <li>Keep loose magnets locked away during assembly.</li>
+        </ul>
+      </div>
+
+      <div class="component-section">
+        <h3>Electrical Safety</h3>
+        <ul>
+          <li>Use only a regulated 5V power supply. Never exceed 5V.</li>
+          <li>The MFRC522 operates at 3.3V. Never connect it to 5V.</li>
+          <li>Keep all wiring inside the enclosed box. No exposed connections.</li>
+          <li>The enclosure should be fully closed (lid screwed on) during use.</li>
+          <li>Do not use the device near water or liquids.</li>
+          <li>Unplug the power supply when not in use or when opening the enclosure.</li>
+        </ul>
+      </div>
+
+      <div class="component-section">
+        <h3>Volume and Hearing</h3>
+        <ul>
+          <li>All audio goes to an external Bluetooth speaker.</li>
+          <li>Set the speaker volume to a safe level BEFORE giving it to the child.</li>
+          <li>The American Academy of Pediatrics recommends keeping volume below 75 dB for extended listening.</li>
+          <li>Place the speaker at least 1 meter from the child when possible.</li>
+        </ul>
+      </div>
+
+      <div class="component-section">
+        <h3>Screen Time</h3>
+        <ul>
+          <li>The BabyBox has a built-in daily video limit system.</li>
+          <li>Set appropriate limits in the web UI (Settings page).</li>
+          <li>Audio content is unlimited; only video counts against the daily limit.</li>
+          <li>The box provides LED + buzzer feedback when the video limit is reached.</li>
+          <li>Supervise screen time for children under 2 (AAP recommendation).</li>
+        </ul>
+      </div>
+
+      <div class="component-section">
+        <h3>Physical Safety</h3>
+        <ul>
+          <li>All enclosure corners are rounded (5 mm radius).</li>
+          <li>Walls are 3 mm thick PETG -- sturdy enough for toddler handling.</li>
+          <li>Figurines should be inspected regularly for cracks. If a crack exposes a magnet, remove the figurine immediately.</li>
+          <li>The device is not a toy -- supervise initial use sessions.</li>
+          <li>Keep small parts (screws, wire scraps) away from children during assembly.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Ready to build?</h2>
+        <p>Check out the quick-start setup guide, or dive into the source files on GitHub.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="setup.html" class="btn btn-lg">Quick Setup Guide</a>
+          <a href="https://github.com" class="btn btn-lg" target="_blank" rel="noopener" style="background: var(--color-text); color: white;">View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+              <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+              <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+              <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+              <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+              <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+            </svg>
+            BabyBox
+          </div>
+          <p>A toddler media player built with love. Open source and free forever.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="setup.html">Setup Guide</a>
+          <a href="assembly-guide.html">Assembly Guide</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <a href="about.html">About</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com" target="_blank" rel="noopener">Issues</a>
+        </div>
+        <div class="footer-col">
+          <h4>Built With</h4>
+          <a href="#">Raspberry Pi</a>
+          <a href="#">Python & Flask</a>
+          <a href="#">OpenSCAD</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Made with care for tiny humans.</span>
+        <a href="https://github.com" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
