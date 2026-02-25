@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - BabyBox</title>
+  <meta name="description" content="Frequently asked questions about BabyBox, the toddler-friendly media player powered by RFID figurines and Raspberry Pi.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+          <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+          <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+          <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+          <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+        </svg>
+        BabyBox
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="features.html">Features</a>
+        <a href="setup.html">Setup</a>
+        <a href="faq.html" class="active">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="https://github.com" class="nav-github" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Got questions?</span>
+      <h1>Frequently Asked Questions</h1>
+      <p>Everything you need to know about building and using BabyBox.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="section">
+    <div class="container">
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What age is BabyBox designed for?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Designed for toddlers ages 1-5. The figurine-based interaction requires no reading or screen navigation. Even a 1-year-old can place a figurine on the box.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I use it without a TV?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Absolutely! BabyBox works great as an audio-only player. Just download audio-only content and your child can listen to music, stories, and podcasts through the Bluetooth speaker.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How much does it cost to build?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Around $80 for all components. The most expensive parts are the Raspberry Pi (~$15) and a Bluetooth speaker (~$15). If you already have a 3D printer, filament costs about $10.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What content can I use?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Any YouTube video or audio. Parents paste YouTube URLs into the dashboard, and the content is downloaded locally. You choose whether to save it as video (MP4) or audio-only (MP3).</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is the content AI-generated?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>No! All content comes from YouTube — real songs, real shows, real creators. BabyBox is just the player, not a content generator. You pick exactly what your child can access.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How do video limits work?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>You set a daily limit (by number of videos or total minutes). The LED strip turns yellow as a warning when the limit is close, then red when it's reached. Audio content is never limited.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Can multiple kids use it?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Yes! Each figurine is independent. You can have different figurines for different children or different moods. The playback history tracks which figurines were used.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What if the Bluetooth speaker is off?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>BabyBox will attempt to reconnect. If the speaker isn't available, audio won't play but video will still display on the TV (silent). A buzzer beep alerts that something's wrong.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is it safe for toddlers?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>The enclosure is 3D-printed with rounded corners and no small removable parts. The figurines are designed to be chunky and toddler-safe. All electronics are fully enclosed. The magnets are embedded inside the plastic.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I customize the figurines?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><p>Yes! The figurine base is standardized (35mm diameter with magnet and RFID pockets). You can design any character on top — we use Meshy AI to generate 3D models, then merge them with the base in Blender.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Still have questions?</h2>
+        <p>Check out the full project documentation on GitHub or start building your own BabyBox today.</p>
+        <a href="setup.html" class="btn btn-lg">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+              <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+              <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+              <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+              <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+              <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+            </svg>
+            BabyBox
+          </div>
+          <p>A toddler media player built with love. Open source and free forever.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="setup.html">Setup Guide</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <a href="about.html">About</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com" target="_blank" rel="noopener">Issues</a>
+        </div>
+        <div class="footer-col">
+          <h4>Built With</h4>
+          <a href="#">Raspberry Pi</a>
+          <a href="#">Python & Flask</a>
+          <a href="#">OpenSCAD</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Made with care for tiny humans.</span>
+        <a href="https://github.com" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

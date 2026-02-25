@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}BabyBox - History{% endblock %}
+{% block heading %}Playback History{% endblock %}
+
+{% block body %}
+<div class="card">
+    {% if logs %}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Started</th>
+                <th>Ended</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.title }}</td>
+                <td><span class="badge {{ log.media_type }}">{{ log.media_type }}</span></td>
+                <td>{{ log.started_at or '' }}</td>
+                <td>{{ log.ended_at or '—' }}</td>
+                <td>{{ 'Yes' if log.completed else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p class="muted">No playback history yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+[Unit]
+Description=BabyBox Media Player
+After=network.target bluetooth.target pulseaudio.service
+Wants=bt-connect.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/babybox
+Environment=BABYBOX_ENV=pi
+ExecStart=/usr/bin/python3 -m software.main
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

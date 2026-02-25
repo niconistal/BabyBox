@@ -1,0 +1,11 @@
+flask>=3.0
+python-mpv>=1.0
+yt-dlp>=2024.0
+
+# Pi-only (install manually on Raspberry Pi)
+# mfrc522
+# rpi_ws281x
+# RPi.GPIO
+
+# Testing
+pytest>=8.0

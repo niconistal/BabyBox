@@ -1,0 +1,23 @@
+[Unit]
+Description=BabyBox Bluetooth Speaker Auto-Connect
+After=bluetooth.target pulseaudio.service
+Wants=bluetooth.target
+
+[Service]
+Type=oneshot
+User=pi
+ExecStartPre=/bin/sleep 5
+ExecStart=/bin/bash -c '\
+    MAC=$(python3 -c "from software.db import Database; db=Database(); print(db.get_setting(\"bt_speaker_mac\") or \"\")"); \
+    if [ -n "$MAC" ]; then \
+        bluetoothctl power on; \
+        sleep 2; \
+        bluetoothctl connect "$MAC"; \
+        sleep 3; \
+        pactl set-default-sink "bluez_sink.${MAC//:/_}.a2dp_sink"; \
+    fi'
+WorkingDirectory=/home/pi/babybox
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

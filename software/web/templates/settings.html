@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}BabyBox - Settings{% endblock %}
+{% block heading %}Settings{% endblock %}
+
+{% block body %}
+<div class="card">
+    <h2>Video Limits</h2>
+    <form id="limits-form" class="form-col">
+        <label>Max videos per day:
+            <input type="number" id="limit-count" value="{{ settings.get('daily_video_limit_count', '5') }}" min="1" max="50">
+        </label>
+        <label>Max video minutes per day:
+            <input type="number" id="limit-minutes" value="{{ settings.get('daily_video_limit_minutes', '60') }}" min="1" max="480">
+        </label>
+        <label>Limit reset hour (0-23):
+            <input type="number" id="reset-hour" value="{{ settings.get('limit_reset_hour', '6') }}" min="0" max="23">
+        </label>
+        <button type="submit" class="btn btn-primary">Save Limits</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2>Bluetooth Speaker</h2>
+    <p>Current: <strong id="current-bt">{{ settings.get('bt_speaker_mac', 'None') or 'None' }}</strong></p>
+    <button id="bt-scan" class="btn">Scan for Speakers</button>
+    <div id="bt-devices" class="hidden">
+        <p>Scanning... <span class="spinner"></span></p>
+        <ul id="bt-list"></ul>
+    </div>
+</div>
+
+<div class="card">
+    <h2>System</h2>
+    <div class="btn-row">
+        <button id="reboot-btn" class="btn">Reboot</button>
+        <button id="shutdown-btn" class="btn btn-danger">Shutdown</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('limits-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await fetch('/api/settings', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                daily_video_limit_count: document.getElementById('limit-count').value,
+                daily_video_limit_minutes: document.getElementById('limit-minutes').value,
+                limit_reset_hour: document.getElementById('reset-hour').value,
+            })
+        });
+        alert('Settings saved!');
+    });
+
+    document.getElementById('bt-scan').addEventListener('click', async () => {
+        const div = document.getElementById('bt-devices');
+        div.classList.remove('hidden');
+        const res = await fetch('/api/bluetooth/scan', {method: 'POST'});
+        const data = await res.json();
+        const list = document.getElementById('bt-list');
+        list.innerHTML = '';
+        if (data.devices.length === 0) {
+            list.innerHTML = '<li>No devices found. Make sure your speaker is in pairing mode.</li>';
+            return;
+        }
+        data.devices.forEach(d => {
+            const li = document.createElement('li');
+            li.innerHTML = `${esc(d.name)} <code>${esc(d.mac)}</code> <button class="btn btn-sm bt-pair" data-mac="${esc(d.mac)}">Pair</button>`;
+            list.appendChild(li);
+        });
+        list.querySelectorAll('.bt-pair').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                btn.textContent = 'Pairing...';
+                const r = await fetch('/api/bluetooth/pair', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({mac: btn.dataset.mac})
+                });
+                if (r.ok) {
+                    document.getElementById('current-bt').textContent = btn.dataset.mac;
+                    alert('Speaker paired and connected!');
+                } else {
+                    alert('Pairing failed. Try again.');
+                }
+                btn.textContent = 'Pair';
+            });
+        });
+    });
+
+    document.getElementById('reboot-btn').addEventListener('click', async () => {
+        if (!confirm('Reboot BabyBox?')) return;
+        await fetch('/api/system/reboot', {method: 'POST'});
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:40vh">Rebooting...</h1>';
+    });
+
+    document.getElementById('shutdown-btn').addEventListener('click', async () => {
+        if (!confirm('Shutdown BabyBox?')) return;
+        await fetch('/api/system/shutdown', {method: 'POST'});
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:40vh">Shutting down...</h1>';
+    });
+</script>
+{% endblock %}

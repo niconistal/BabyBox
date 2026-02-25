@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}BabyBox - Library{% endblock %}
+{% block heading %}Media Library{% endblock %}
+
+{% block body %}
+<div class="card">
+    <h2>Download from YouTube</h2>
+    <form id="download-form" class="form-row">
+        <input type="url" id="url-input" placeholder="Paste YouTube URL..." required>
+        <select id="type-select">
+            <option value="video">Video (MP4)</option>
+            <option value="audio">Audio Only (MP3)</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Download</button>
+    </form>
+    <div id="download-progress" class="hidden">
+        <p>Downloading: <span id="dl-title">...</span></p>
+        <div class="progress-bar">
+            <div id="dl-bar" class="progress-fill" style="width: 0%"></div>
+        </div>
+        <p id="dl-status"></p>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Your Media</h2>
+    {% if media %}
+    <div class="media-grid">
+        {% for m in media %}
+        <div class="media-item" data-id="{{ m.id }}">
+            {% if m.thumbnail %}
+                <img src="/thumbnails/{{ m.thumbnail }}" alt="" class="thumb">
+            {% else %}
+                <div class="thumb thumb-placeholder">{{ m.media_type.value[0]|upper }}</div>
+            {% endif %}
+            <div class="media-info">
+                <strong>{{ m.title }}</strong>
+                <span class="badge {{ m.media_type.value }}">{{ m.media_type.value }}</span>
+                {% if m.duration_s %}
+                    <span class="muted">{{ (m.duration_s // 60) }}:{{ "%02d"|format(m.duration_s % 60) }}</span>
+                {% endif %}
+            </div>
+            <button class="btn btn-danger btn-sm delete-media" data-id="{{ m.id }}">Delete</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="muted">No media yet. Download something from YouTube above!</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('download-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const url = document.getElementById('url-input').value;
+        const mediaType = document.getElementById('type-select').value;
+
+        const res = await fetch('/api/download', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({url, media_type: mediaType})
+        });
+        const data = await res.json();
+        if (data.error) { alert(data.error); return; }
+
+        const prog = document.getElementById('download-progress');
+        prog.classList.remove('hidden');
+        document.getElementById('dl-title').textContent = 'Starting...';
+
+        const poll = setInterval(async () => {
+            const r = await fetch(`/api/download/${data.job_id}`);
+            const j = await r.json();
+            document.getElementById('dl-title').textContent = j.title || '...';
+            document.getElementById('dl-bar').style.width = j.progress + '%';
+            document.getElementById('dl-status').textContent = j.status;
+
+            if (j.status === 'complete') {
+                clearInterval(poll);
+                document.getElementById('dl-status').textContent = 'Done!';
+                setTimeout(() => location.reload(), 1000);
+            } else if (j.status === 'failed') {
+                clearInterval(poll);
+                document.getElementById('dl-status').textContent = 'Failed: ' + j.error;
+            }
+        }, 1000);
+    });
+
+    document.querySelectorAll('.delete-media').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            if (!confirm('Delete this media?')) return;
+            await fetch(`/api/media/${btn.dataset.id}`, {method: 'DELETE'});
+            btn.closest('.media-item').remove();
+        });
+    });
+</script>
+{% endblock %}

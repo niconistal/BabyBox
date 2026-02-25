@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BabyBox - Music & videos, one figurine at a time</title>
+  <meta name="description" content="A toddler-friendly media player. Kids place 3D-printed figurines to play music and videos. Open source, Raspberry Pi powered, no subscriptions.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+          <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+          <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+          <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+          <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+        </svg>
+        BabyBox
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="features.html">Features</a>
+        <a href="setup.html">Setup</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="https://github.com" class="nav-github" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Music & videos, <span class="highlight">one figurine</span> at a time</h1>
+        <p>A toddler-friendly media player your child controls with 3D-printed figurines. No screens to unlock, no apps to navigate. Just place and play.</p>
+        <div class="hero-buttons">
+          <a href="setup.html" class="btn btn-primary btn-lg">Build Yours</a>
+          <a href="features.html" class="btn btn-outline btn-lg">See Features</a>
+        </div>
+      </div>
+
+      <!-- Hero SVG Illustration -->
+      <div class="hero-illustration animate-float-slow">
+        <svg viewBox="0 0 560 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background blob -->
+          <ellipse cx="280" cy="300" rx="240" ry="30" fill="#6C63FF" opacity="0.06"/>
+
+          <!-- Box body -->
+          <rect x="140" y="170" width="280" height="150" rx="20" fill="#FFFFFF" stroke="#E8E0D8" stroke-width="2"/>
+          <rect x="140" y="170" width="280" height="150" rx="20" fill="url(#boxGrad)" opacity="0.05"/>
+
+          <!-- Box top surface -->
+          <path d="M148 175 C148 165 155 158 165 158 L395 158 C405 158 412 165 412 175" fill="#FAFAFA" stroke="#E8E0D8" stroke-width="2"/>
+
+          <!-- LED strip on top edge -->
+          <rect x="170" y="155" width="220" height="6" rx="3" fill="#2D3436" opacity="0.1"/>
+          <circle cx="185" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="205" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="225" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="245" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="265" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="285" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="305" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="325" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="345" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="365" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+          <circle cx="385" cy="158" r="3" class="animate-led" fill="#6C63FF"/>
+
+          <!-- LED glow -->
+          <rect x="170" y="150" width="220" height="16" rx="8" fill="#4ECDC4" opacity="0.15" class="animate-glow"/>
+
+          <!-- Play button on front -->
+          <path d="M262 240 L262 270 L288 255 Z" fill="#6C63FF" opacity="0.2"/>
+
+          <!-- Speaker grille -->
+          <circle cx="340" cy="255" r="20" fill="none" stroke="#E8E0D8" stroke-width="1.5"/>
+          <circle cx="340" cy="255" r="14" fill="none" stroke="#E8E0D8" stroke-width="1"/>
+          <circle cx="340" cy="255" r="8" fill="none" stroke="#E8E0D8" stroke-width="0.75"/>
+
+          <!-- Figurine hovering above -->
+          <g class="animate-float" style="transform-origin: 280px 100px;">
+            <!-- Figurine body -->
+            <ellipse cx="280" cy="144" rx="22" ry="6" fill="#E8E0D8" opacity="0.5"/>
+            <rect x="263" y="108" width="34" height="36" rx="8" fill="#FF6B6B"/>
+            <circle cx="280" cy="96" r="16" fill="#FF6B6B"/>
+            <!-- Face -->
+            <circle cx="274" cy="93" r="2.5" fill="white"/>
+            <circle cx="286" cy="93" r="2.5" fill="white"/>
+            <path d="M274 100 Q280 105 286 100" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Magnet dots -->
+            <circle cx="272" cy="140" r="3" fill="#636E72" opacity="0.4"/>
+            <circle cx="288" cy="140" r="3" fill="#636E72" opacity="0.4"/>
+          </g>
+
+          <!-- Magnetic field lines -->
+          <path d="M272 148 Q272 152 272 155" stroke="#6C63FF" stroke-width="1" opacity="0.3" stroke-dasharray="2 2"/>
+          <path d="M288 148 Q288 152 288 155" stroke="#6C63FF" stroke-width="1" opacity="0.3" stroke-dasharray="2 2"/>
+
+          <!-- RFID waves -->
+          <circle cx="280" cy="158" r="12" stroke="#6C63FF" stroke-width="1.5" fill="none" opacity="0.3" class="animate-rfid-wave"/>
+          <circle cx="280" cy="158" r="12" stroke="#6C63FF" stroke-width="1.5" fill="none" opacity="0.3" class="animate-rfid-wave"/>
+          <circle cx="280" cy="158" r="12" stroke="#6C63FF" stroke-width="1.5" fill="none" opacity="0.3" class="animate-rfid-wave"/>
+
+          <!-- Sparkles -->
+          <g class="animate-sparkle" style="transform-origin: 200px 120px;">
+            <path d="M200 116 L200 124 M196 120 L204 120" stroke="#FFE66D" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <g class="animate-sparkle" style="transform-origin: 370px 100px;">
+            <path d="M370 96 L370 104 M366 100 L374 100" stroke="#4ECDC4" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <g class="animate-sparkle" style="transform-origin: 160px 190px;">
+            <path d="M160 186 L160 194 M156 190 L164 190" stroke="#FF6B6B" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+
+          <!-- Music notes floating -->
+          <g class="animate-note" style="transform-origin: 400px 180px;">
+            <text x="400" y="180" fill="#6C63FF" font-size="18" opacity="0.4">&#9834;</text>
+          </g>
+          <g class="animate-note" style="transform-origin: 160px 140px;">
+            <text x="160" y="140" fill="#FF6B6B" font-size="14" opacity="0.3">&#9835;</text>
+          </g>
+
+          <defs>
+            <linearGradient id="boxGrad" x1="140" y1="170" x2="420" y2="320">
+              <stop offset="0%" stop-color="#6C63FF"/>
+              <stop offset="100%" stop-color="#4ECDC4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Strip -->
+  <section class="proof-strip">
+    <div class="container">
+      <div class="proof-items">
+        <div class="proof-item">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#4ECDC4" stroke-width="2"><circle cx="10" cy="10" r="7"/><path d="M7 10l2 2 4-4"/></svg>
+          Open source
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#6C63FF" stroke-width="2"><rect x="3" y="5" width="14" height="10" rx="2"/><circle cx="10" cy="10" r="1.5"/></svg>
+          Raspberry Pi powered
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#FF6B6B" stroke-width="2"><path d="M4 16V6l6-3 6 3v10l-6 2-6-2z"/></svg>
+          3D printable
+        </div>
+        <div class="proof-item">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#FFE66D" stroke-width="2.5"><path d="M10 3v14M5 8l5-5 5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          No subscriptions
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="section feature-cards">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Why BabyBox?</span>
+        <h2>Designed for tiny hands, loved by parents</h2>
+        <p>A media player that puts kids in control of their entertainment, while giving parents peace of mind.</p>
+      </div>
+      <div class="grid grid-3 stagger-children reveal">
+        <!-- RFID Magic -->
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="22" r="6" fill="#6C63FF" opacity="0.2"/>
+              <circle cx="18" cy="22" r="6" stroke="#6C63FF" stroke-width="2" fill="none"/>
+              <path d="M10 18a8 8 0 0116 0" stroke="#6C63FF" stroke-width="2" fill="none" opacity="0.5"/>
+              <path d="M6 14a12 12 0 0124 0" stroke="#6C63FF" stroke-width="2" fill="none" opacity="0.3"/>
+              <circle cx="18" cy="10" r="3" fill="#FF6B6B"/>
+            </svg>
+          </div>
+          <h3>RFID Magic</h3>
+          <p>Each figurine has a hidden RFID tag. Place it on the box, and the assigned content plays instantly. No buttons, no screens.</p>
+        </div>
+        <!-- Screen Time Limits -->
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="18" r="12" stroke="#FF6B6B" stroke-width="2" fill="none"/>
+              <path d="M18 10v8l5 5" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round"/>
+              <path d="M26 8l2-2" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="18" cy="18" r="2" fill="#FF6B6B"/>
+            </svg>
+          </div>
+          <h3>Screen Time Limits</h3>
+          <p>Set daily video limits by count or duration. LEDs warn when time's almost up. Audio is always unlimited.</p>
+        </div>
+        <!-- Parent Dashboard -->
+        <div class="feature-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 36 36" fill="none">
+              <rect x="4" y="6" width="28" height="20" rx="3" stroke="#4ECDC4" stroke-width="2" fill="none"/>
+              <line x1="4" y1="12" x2="32" y2="12" stroke="#4ECDC4" stroke-width="2"/>
+              <rect x="8" y="16" width="8" height="3" rx="1" fill="#4ECDC4" opacity="0.3"/>
+              <rect x="8" y="21" width="12" height="3" rx="1" fill="#4ECDC4" opacity="0.2"/>
+              <circle cx="27" cy="18" r="3" fill="#4ECDC4" opacity="0.4"/>
+              <line x1="12" y1="30" x2="24" y2="30" stroke="#4ECDC4" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Parent Dashboard</h3>
+          <p>A friendly web interface to download content from YouTube, assign figurines, and manage settings from your phone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Simple as 1-2-3</span>
+        <h2>How it works</h2>
+        <p>From YouTube to your toddler's hands in three easy steps.</p>
+      </div>
+      <div class="steps reveal">
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-illustration">
+            <svg viewBox="0 0 160 120" fill="none">
+              <!-- Phone outline -->
+              <rect x="45" y="10" width="70" height="100" rx="10" stroke="#6C63FF" stroke-width="2" fill="white"/>
+              <!-- Screen -->
+              <rect x="50" y="20" width="60" height="70" rx="4" fill="#F5F5F5"/>
+              <!-- YouTube play button -->
+              <rect x="60" y="35" width="40" height="28" rx="4" fill="#FF6B6B" opacity="0.15"/>
+              <path d="M75 44 L75 56 L85 50 Z" fill="#FF6B6B"/>
+              <!-- Download arrow -->
+              <path d="M80 68 L80 80 M74 74 L80 80 L86 74" stroke="#6C63FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Home button -->
+              <circle cx="80" cy="100" r="4" stroke="#E8E0D8" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <h3>Download</h3>
+          <p>Paste a YouTube link in the parent dashboard. Choose video or audio-only.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-illustration">
+            <svg viewBox="0 0 160 120" fill="none">
+              <!-- Figurine -->
+              <rect x="55" y="40" width="24" height="30" rx="6" fill="#FF6B6B"/>
+              <circle cx="67" cy="32" r="12" fill="#FF6B6B"/>
+              <circle cx="63" cy="30" r="2" fill="white"/>
+              <circle cx="71" cy="30" r="2" fill="white"/>
+              <path d="M63 36 Q67 39 71 36" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <!-- RFID tag -->
+              <ellipse cx="67" cy="72" rx="12" ry="3" fill="#6C63FF" opacity="0.2"/>
+              <ellipse cx="67" cy="72" rx="8" ry="2" stroke="#6C63FF" stroke-width="1" fill="none"/>
+              <!-- Arrow connecting -->
+              <path d="M90 55 L110 55" stroke="#4ECDC4" stroke-width="2" stroke-dasharray="4 3"/>
+              <path d="M106 51 L112 55 L106 59" stroke="#4ECDC4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Tag icon -->
+              <rect x="115" y="40" width="30" height="30" rx="6" fill="#FFE66D" opacity="0.3"/>
+              <text x="122" y="60" font-size="14" fill="#2D3436" font-family="sans-serif">ID</text>
+            </svg>
+          </div>
+          <h3>Assign</h3>
+          <p>Scan a figurine and link it to the downloaded content. Done in seconds.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-illustration">
+            <svg viewBox="0 0 160 120" fill="none">
+              <!-- Box -->
+              <rect x="30" y="55" width="100" height="55" rx="10" fill="white" stroke="#E8E0D8" stroke-width="2"/>
+              <!-- LED strip -->
+              <rect x="40" y="52" width="80" height="5" rx="2.5" fill="#2D3436" opacity="0.08"/>
+              <circle cx="50" cy="54.5" r="2.5" fill="#4ECDC4"/>
+              <circle cx="62" cy="54.5" r="2.5" fill="#6C63FF"/>
+              <circle cx="74" cy="54.5" r="2.5" fill="#FF6B6B"/>
+              <circle cx="86" cy="54.5" r="2.5" fill="#FFE66D"/>
+              <circle cx="98" cy="54.5" r="2.5" fill="#4ECDC4"/>
+              <circle cx="110" cy="54.5" r="2.5" fill="#6C63FF"/>
+              <!-- Figurine on top -->
+              <rect x="68" y="26" width="20" height="24" rx="5" fill="#FF6B6B"/>
+              <circle cx="78" cy="20" r="10" fill="#FF6B6B"/>
+              <circle cx="75" cy="18" r="1.5" fill="white"/>
+              <circle cx="81" cy="18" r="1.5" fill="white"/>
+              <!-- Music notes -->
+              <text x="125" y="50" font-size="16" fill="#6C63FF" opacity="0.5">&#9834;</text>
+              <text x="20" y="45" font-size="12" fill="#FF6B6B" opacity="0.4">&#9835;</text>
+              <text x="135" y="75" font-size="10" fill="#4ECDC4" opacity="0.3">&#9833;</text>
+            </svg>
+          </div>
+          <h3>Place & Play</h3>
+          <p>Your child places the figurine on the box. Content plays instantly. Magic!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Limits Showcase -->
+  <section class="section">
+    <div class="container">
+      <div class="showcase reveal">
+        <div class="showcase-illustration">
+          <svg viewBox="0 0 440 320" fill="none">
+            <!-- Box with LED warning -->
+            <rect x="80" y="140" width="280" height="140" rx="18" fill="white" stroke="#E8E0D8" stroke-width="2"/>
+
+            <!-- LED strip showing warning colors -->
+            <rect x="100" y="136" width="240" height="8" rx="4" fill="#2D3436" opacity="0.08"/>
+            <circle cx="115" cy="140" r="4" fill="#FFE66D"/>
+            <circle cx="135" cy="140" r="4" fill="#FFE66D"/>
+            <circle cx="155" cy="140" r="4" fill="#FFE66D"/>
+            <circle cx="175" cy="140" r="4" fill="#FFE66D"/>
+            <circle cx="195" cy="140" r="4" fill="#FFE66D"/>
+            <circle cx="215" cy="140" r="4" fill="#FFE66D"/>
+            <circle cx="235" cy="140" r="4" fill="#FF6B6B"/>
+            <circle cx="255" cy="140" r="4" fill="#FF6B6B"/>
+            <circle cx="275" cy="140" r="4" fill="#FF6B6B"/>
+            <circle cx="295" cy="140" r="4" fill="#FF6B6B"/>
+            <circle cx="315" cy="140" r="4" fill="#FF6B6B"/>
+            <circle cx="335" cy="140" r="4" fill="#FF6B6B"/>
+
+            <!-- LED glow -->
+            <rect x="100" y="132" width="240" height="16" rx="8" fill="#FFE66D" opacity="0.12"/>
+
+            <!-- TV screen above -->
+            <rect x="130" y="20" width="180" height="105" rx="6" fill="#2D3436"/>
+            <rect x="136" y="26" width="168" height="88" rx="3" fill="#374151"/>
+            <!-- Progress bar on TV -->
+            <rect x="146" y="100" width="148" height="4" rx="2" fill="#636E72"/>
+            <rect x="146" y="100" width="118" height="4" rx="2" fill="#FF6B6B"/>
+            <!-- TV stand -->
+            <rect x="200" y="125" width="40" height="12" fill="#636E72" rx="2"/>
+
+            <!-- Clock/timer icon -->
+            <circle cx="380" cy="60" r="30" fill="#FF6B6B" opacity="0.1"/>
+            <circle cx="380" cy="60" r="20" stroke="#FF6B6B" stroke-width="2" fill="none"/>
+            <path d="M380 48v12l7 7" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Figurine trying to play -->
+            <g opacity="0.5">
+              <rect x="40" y="180" width="24" height="30" rx="6" fill="#6C63FF"/>
+              <circle cx="52" cy="172" r="12" fill="#6C63FF"/>
+              <text x="45" y="200" font-size="14" fill="white">?</text>
+            </g>
+
+            <!-- X mark over figurine -->
+            <circle cx="52" cy="220" r="10" fill="#FF6B6B" opacity="0.15"/>
+            <path d="M47 215 L57 225 M57 215 L47 225" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="showcase-content">
+          <span class="badge">Screen time control</span>
+          <h2>Smart video limits that kids understand</h2>
+          <p>Set daily video limits and let the LED strip do the talking. No arguments, no negotiations.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature">
+              <div class="showcase-feature-icon yellow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#F5D84A" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              </div>
+              <div>
+                <h4>Yellow warning</h4>
+                <p>LEDs turn yellow when the daily limit is almost reached, giving a gentle heads-up.</p>
+              </div>
+            </div>
+            <div class="showcase-feature">
+              <div class="showcase-feature-icon red">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+              </div>
+              <div>
+                <h4>Red stop</h4>
+                <p>LEDs flash red when the limit is reached. No more videos today, but audio keeps playing!</p>
+              </div>
+            </div>
+            <div class="showcase-feature">
+              <div class="showcase-feature-icon green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="2"><path d="M9 18V5l12 7-12 6z"/></svg>
+              </div>
+              <div>
+                <h4>Audio unlimited</h4>
+                <p>Music and audio content are never limited. Kids can always listen to their favorites.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Specs Strip -->
+  <section class="tech-strip">
+    <div class="container">
+      <div class="tech-items">
+        <div class="tech-item">
+          <div class="tech-item-label">Board</div>
+          <div class="tech-item-value">Pi Zero 2 W</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">RFID</div>
+          <div class="tech-item-value">MFRC522</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">LEDs</div>
+          <div class="tech-item-value">WS2812 RGB</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Audio</div>
+          <div class="tech-item-value">Bluetooth</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Player</div>
+          <div class="tech-item-value">mpv</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">UI</div>
+          <div class="tech-item-value">Flask</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Ready to build yours?</h2>
+        <p>Follow our step-by-step guide to create a BabyBox for your little one. All open source, no subscriptions ever.</p>
+        <a href="setup.html" class="btn btn-lg">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+              <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+              <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+              <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+              <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+              <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+            </svg>
+            BabyBox
+          </div>
+          <p>A toddler media player built with love. Open source and free forever.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="setup.html">Setup Guide</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <a href="about.html">About</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com" target="_blank" rel="noopener">Issues</a>
+        </div>
+        <div class="footer-col">
+          <h4>Built With</h4>
+          <a href="#">Raspberry Pi</a>
+          <a href="#">Python & Flask</a>
+          <a href="#">OpenSCAD</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Made with care for tiny humans.</span>
+        <a href="https://github.com" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

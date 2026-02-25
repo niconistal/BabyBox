@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - BabyBox</title>
+  <meta name="description" content="The story behind BabyBox — an open source, Raspberry Pi-powered toddler media player controlled with 3D-printed RFID figurines.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+          <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+          <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+          <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+          <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+        </svg>
+        BabyBox
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="features.html">Features</a>
+        <a href="setup.html">Setup</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html" class="active">About</a>
+        <a href="https://github.com" class="nav-github" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Our Story</span>
+      <h1>About BabyBox</h1>
+      <p>The story behind the toddler-friendly media player</p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="section">
+    <div class="container">
+      <div class="about-content">
+
+        <!-- The Story -->
+        <div class="about-section reveal">
+          <h2>The Story</h2>
+          <p>BabyBox was born from a simple frustration: handing a toddler a tablet just to play a song. Screens are designed for adults — unlock, navigate, tap the right button, avoid the wrong ad. A toddler shouldn't need to do any of that.</p>
+          <p>We wanted something physical, something tangible. Place a figurine, hear a song. That's it. No accounts, no algorithms, no in-app purchases. Just a child's favorite character playing their favorite music.</p>
+        </div>
+
+        <!-- Open Source -->
+        <div class="about-section reveal">
+          <h2>Open Source</h2>
+          <p>BabyBox is completely open source — hardware designs, software, and 3D models. We believe every family should be able to build one without paying for subscriptions or proprietary hardware.</p>
+          <p>The entire project is available on GitHub. Fork it, modify it, make it yours. Contributions are welcome.</p>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="about-section reveal">
+          <h2>Tech Stack</h2>
+          <div class="tech-stack-grid">
+            <div class="tech-stack-item">
+              <h4>Python 3</h4>
+              <p>Application logic</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>Flask</h4>
+              <p>Web dashboard</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>mpv</h4>
+              <p>Media playback</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>SQLite</h4>
+              <p>Data storage</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>yt-dlp</h4>
+              <p>YouTube downloads</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>OpenSCAD</h4>
+              <p>3D enclosure design</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>Raspberry Pi OS</h4>
+              <p>Operating system</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Built With Help From -->
+        <div class="about-section reveal">
+          <h2>Built With Help From</h2>
+          <div class="tech-stack-grid">
+            <div class="tech-stack-item">
+              <h4>Claude Code</h4>
+              <p>Application code, hardware design, and this website</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>Meshy AI</h4>
+              <p>3D figurine top generation</p>
+            </div>
+            <div class="tech-stack-item">
+              <h4>The open source community</h4>
+              <p>Libraries, tools, and inspiration</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Explore the project on GitHub</h2>
+        <p>Browse the source code, file issues, or contribute. BabyBox is built by and for the community.</p>
+        <a href="https://github.com" class="btn btn-lg" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+              <rect x="4" y="10" width="32" height="24" rx="6" fill="#6C63FF"/>
+              <rect x="8" y="8" width="24" height="3" rx="1.5" fill="#4ECDC4"/>
+              <circle cx="20" cy="6" r="4" fill="#FF6B6B"/>
+              <rect x="17" y="6" width="6" height="4" rx="1" fill="#FF6B6B"/>
+              <path d="M17 18 L17 28 L26 23 Z" fill="white" opacity="0.9"/>
+            </svg>
+            BabyBox
+          </div>
+          <p>A toddler media player built with love. Open source and free forever.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="setup.html">Setup Guide</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <a href="about.html">About</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com" target="_blank" rel="noopener">Issues</a>
+        </div>
+        <div class="footer-col">
+          <h4>Built With</h4>
+          <a href="#">Raspberry Pi</a>
+          <a href="#">Python & Flask</a>
+          <a href="#">OpenSCAD</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Made with care for tiny humans.</span>
+        <a href="https://github.com" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

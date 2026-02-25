@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}BabyBox - Figurines{% endblock %}
+{% block heading %}Figurine Manager{% endblock %}
+
+{% block body %}
+<div class="card">
+    <h2>Register New Figurine</h2>
+    <div id="register-flow">
+        <p>Place a figurine on the box, then assign it to a media file.</p>
+        <button id="start-register" class="btn btn-primary">Start Scanning</button>
+
+        <div id="scan-step" class="hidden">
+            <p>Waiting for figurine... <span class="spinner"></span></p>
+            <p>Detected UID: <strong id="scanned-uid">—</strong></p>
+        </div>
+
+        <div id="assign-step" class="hidden">
+            <form id="assign-form" class="form-col">
+                <input type="hidden" id="assign-uid" value="">
+                <label>Figurine name:
+                    <input type="text" id="assign-label" placeholder="e.g. Blue dinosaur">
+                </label>
+                <label>Assign to media:
+                    <select id="assign-media">
+                        {% for m in media %}
+                        <option value="{{ m.id }}">{{ m.title }} ({{ m.media_type.value }})</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <button type="submit" class="btn btn-primary">Save Mapping</button>
+                <button type="button" id="cancel-register" class="btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Current Mappings</h2>
+    {% if tags %}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Figurine</th>
+                <th>UID</th>
+                <th>Media</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tags %}
+            <tr>
+                <td>{{ t.label or '(unnamed)' }}</td>
+                <td><code>{{ t.uid }}</code></td>
+                <td>{{ t.media_title }}</td>
+                <td><button class="btn btn-danger btn-sm delete-tag" data-uid="{{ t.uid }}">Remove</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p class="muted">No figurines registered yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let scanPoll = null;
+
+    document.getElementById('start-register').addEventListener('click', async () => {
+        await fetch('/api/register-mode', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({enabled: true})
+        });
+        document.getElementById('start-register').classList.add('hidden');
+        document.getElementById('scan-step').classList.remove('hidden');
+        document.getElementById('scanned-uid').textContent = '—';
+
+        scanPoll = setInterval(async () => {
+            const res = await fetch('/api/scan-tag');
+            const data = await res.json();
+            if (data.uid) {
+                document.getElementById('scanned-uid').textContent = data.uid;
+                document.getElementById('assign-uid').value = data.uid;
+                document.getElementById('scan-step').classList.add('hidden');
+                document.getElementById('assign-step').classList.remove('hidden');
+                clearInterval(scanPoll);
+            }
+        }, 500);
+    });
+
+    document.getElementById('assign-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const uid = document.getElementById('assign-uid').value;
+        const mediaId = document.getElementById('assign-media').value;
+        const label = document.getElementById('assign-label').value;
+
+        await fetch('/api/tags', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({uid, media_id: parseInt(mediaId), label})
+        });
+        location.reload();
+    });
+
+    document.getElementById('cancel-register').addEventListener('click', async () => {
+        if (scanPoll) clearInterval(scanPoll);
+        await fetch('/api/register-mode', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({enabled: false})
+        });
+        location.reload();
+    });
+
+    document.querySelectorAll('.delete-tag').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            if (!confirm('Remove this figurine mapping?')) return;
+            await fetch(`/api/tags/${btn.dataset.uid}`, {method: 'DELETE'});
+            btn.closest('tr').remove();
+        });
+    });
+</script>
+{% endblock %}

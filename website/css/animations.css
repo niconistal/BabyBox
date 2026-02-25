@@ -1,0 +1,161 @@
+/* ========================================
+   BabyBox Animations
+   ======================================== */
+
+/* --- Floating animation for hero --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+/* --- Glow pulse for LEDs --- */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; filter: blur(8px); }
+  50% { opacity: 1; filter: blur(12px); }
+}
+
+.animate-glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* --- LED strip color cycle --- */
+@keyframes led-cycle {
+  0% { fill: #6C63FF; }
+  25% { fill: #FF6B6B; }
+  50% { fill: #4ECDC4; }
+  75% { fill: #FFE66D; }
+  100% { fill: #6C63FF; }
+}
+
+.animate-led {
+  animation: led-cycle 4s ease-in-out infinite;
+}
+
+.animate-led:nth-child(2) { animation-delay: 0.15s; }
+.animate-led:nth-child(3) { animation-delay: 0.3s; }
+.animate-led:nth-child(4) { animation-delay: 0.45s; }
+.animate-led:nth-child(5) { animation-delay: 0.6s; }
+.animate-led:nth-child(6) { animation-delay: 0.75s; }
+.animate-led:nth-child(7) { animation-delay: 0.9s; }
+.animate-led:nth-child(8) { animation-delay: 1.05s; }
+
+/* --- Sparkle --- */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-sparkle:nth-child(2) { animation-delay: 0.5s; }
+.animate-sparkle:nth-child(3) { animation-delay: 1s; }
+.animate-sparkle:nth-child(4) { animation-delay: 1.5s; }
+
+/* --- RFID waves --- */
+@keyframes rfid-wave {
+  0% { opacity: 0.8; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+.animate-rfid-wave {
+  animation: rfid-wave 1.5s ease-out infinite;
+}
+
+.animate-rfid-wave:nth-child(2) { animation-delay: 0.5s; }
+.animate-rfid-wave:nth-child(3) { animation-delay: 1s; }
+
+/* --- Magnetic snap --- */
+@keyframes magnet-snap {
+  0% { transform: translateY(-30px); opacity: 0; }
+  70% { transform: translateY(4px); opacity: 1; }
+  85% { transform: translateY(-2px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-magnet-snap {
+  animation: magnet-snap 1.5s ease-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* --- Fade in up (scroll reveal) --- */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* --- Stagger children --- */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0s; }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 0.3s; }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 0.4s; }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+.stagger-children.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Music notes floating --- */
+@keyframes note-float {
+  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-40px) rotate(20deg); }
+}
+
+.animate-note {
+  animation: note-float 2.5s ease-out infinite;
+}
+
+.animate-note:nth-child(2) { animation-delay: 0.8s; }
+.animate-note:nth-child(3) { animation-delay: 1.6s; }
+
+/* --- Reduce motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .stagger-children > * {
+    opacity: 1;
+    transform: none;
+  }
+}

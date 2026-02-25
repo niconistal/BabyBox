@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BabyBox{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">BabyBox</div>
+        <a href="/" class="{% if request.path == '/' %}active{% endif %}">Dashboard</a>
+        <a href="/library" class="{% if request.path == '/library' %}active{% endif %}">Library</a>
+        <a href="/figurines" class="{% if request.path == '/figurines' %}active{% endif %}">Figurines</a>
+        <a href="/history" class="{% if request.path == '/history' %}active{% endif %}">History</a>
+        <a href="/settings" class="{% if request.path == '/settings' %}active{% endif %}">Settings</a>
+    </nav>
+    <main class="content">
+        <h1>{% block heading %}{% endblock %}</h1>
+        {% block body %}{% endblock %}
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
