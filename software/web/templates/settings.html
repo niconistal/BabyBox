@@ -82,7 +82,8 @@
                     document.getElementById('current-bt').textContent = btn.dataset.mac;
                     alert('Speaker paired and connected!');
                 } else {
-                    alert('Pairing failed. Try again.');
+                    const err = await r.json().catch(() => ({}));
+                    alert('Pairing failed: ' + (err.error || 'try again.'));
                 }
                 btn.textContent = 'Pair';
             });

@@ -11,6 +11,7 @@ sudo apt install -y \
     mpv \
     pulseaudio pulseaudio-module-bluetooth \
     bluez \
+    iw \
     yt-dlp
 
 # Enable SPI for MFRC522
@@ -36,6 +37,33 @@ sudo systemctl enable bt-connect.service
 
 # Ensure user is in required groups
 sudo usermod -aG spi,gpio,bluetooth,audio pi
+
+# PulseAudio runs per-user and normally only starts on login. BabyBox is
+# headless, so enable lingering: the pi user's session (and PulseAudio)
+# starts at boot. Without this, bluetoothd has no A2DP sink registered and
+# speaker connections fail with "br-connection-profile-unavailable".
+echo "Enabling user lingering so PulseAudio runs headless..."
+sudo loginctl enable-linger pi
+sudo systemctl --machine=pi@.host --user enable pulseaudio.socket pulseaudio.service 2>/dev/null || true
+
+# WiFi and Bluetooth share a single 2.4GHz radio + antenna on the Pi Zero 2 W.
+# WiFi power-save (on by default) starves Bluetooth and causes connect
+# timeouts when both are in use. Disable it permanently.
+echo "Disabling WiFi power save (WiFi/Bluetooth coexistence)..."
+sudo tee /etc/systemd/system/wifi-powersave-off.service > /dev/null <<'EOF'
+[Unit]
+Description=Disable WiFi power save (Bluetooth coexistence)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/iw dev wlan0 set power_save off
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl enable wifi-powersave-off.service
 
 echo ""
 echo "=== Setup complete! ==="

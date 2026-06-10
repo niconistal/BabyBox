@@ -177,12 +177,13 @@ def create_app(db: Database, controller: Controller) -> Flask:
         if not mac:
             return jsonify({"error": "MAC address required"}), 400
 
-        success = bluetooth.pair_and_connect(mac)
+        success, error = bluetooth.pair_and_connect(mac)
         if success:
-            bluetooth.set_default_sink(mac)
+            if not bluetooth.set_default_sink(mac):
+                logger.warning("Paired %s but could not set default sink", mac)
             db.set_setting("bt_speaker_mac", mac)
             return jsonify({"ok": True})
-        return jsonify({"error": "Pairing failed"}), 500
+        return jsonify({"error": error or "Pairing failed"}), 500
 
     # -- API: System --
 

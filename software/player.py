@@ -22,7 +22,7 @@ class Player:
         try:
             import mpv
             kwargs = {
-                "audio_device": f"pulse",
+                "audio_device": MPV_AUDIO_DEVICE,
                 "input_default_bindings": False,
                 "input_vo_keyboard": False,
             }

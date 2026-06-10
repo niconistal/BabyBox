@@ -1,22 +1,17 @@
 [Unit]
 Description=BabyBox Bluetooth Speaker Auto-Connect
-After=bluetooth.target pulseaudio.service
-Wants=bluetooth.target
+After=bluetooth.service network.target
+Wants=bluetooth.service
 
 [Service]
 Type=oneshot
 User=pi
-ExecStartPre=/bin/sleep 5
-ExecStart=/bin/bash -c '\
-    MAC=$(python3 -c "from software.db import Database; db=Database(); print(db.get_setting(\"bt_speaker_mac\") or \"\")"); \
-    if [ -n "$MAC" ]; then \
-        bluetoothctl power on; \
-        sleep 2; \
-        bluetoothctl connect "$MAC"; \
-        sleep 3; \
-        pactl set-default-sink "bluez_sink.${MAC//:/_}.a2dp_sink"; \
-    fi'
 WorkingDirectory=/home/pi/babybox
+# PulseAudio runs in the pi user's session (lingering enabled by setup.sh);
+# pactl/bluetoothd need this to find the session bus and PA socket
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/bin/python3 -m software.bt_autoconnect
 RemainAfterExit=yes
 
 [Install]
