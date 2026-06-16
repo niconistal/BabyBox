@@ -66,23 +66,38 @@
         if (data.error) { alert(data.error); return; }
 
         const prog = document.getElementById('download-progress');
+        const bar = document.getElementById('dl-bar');
         prog.classList.remove('hidden');
-        document.getElementById('dl-title').textContent = 'Starting...';
+        document.getElementById('dl-title').textContent = 'Starting…';
+        document.getElementById('dl-status').textContent = '';
+        const started = Date.now();
 
         const poll = setInterval(async () => {
             const r = await fetch(`/api/download/${data.job_id}`);
             const j = await r.json();
-            document.getElementById('dl-title').textContent = j.title || '...';
-            document.getElementById('dl-bar').style.width = j.progress + '%';
-            document.getElementById('dl-status').textContent = j.status;
+            const secs = Math.round((Date.now() - started) / 1000);
+            document.getElementById('dl-title').textContent = j.title || 'Working…';
+
+            const pct = j.progress || 0;
+            // While there's no real % yet (info-fetch / challenge solve), show an
+            // animated indeterminate bar so it's clearly working, not frozen.
+            const indeterminate = pct === 0 && j.status === 'downloading';
+            bar.classList.toggle('indeterminate', indeterminate);
+            bar.style.width = indeterminate ? '100%' : pct + '%';
+
+            const stage = j.stage || j.status;
+            document.getElementById('dl-status').textContent = `${stage} · ${secs}s elapsed`;
 
             if (j.status === 'complete') {
                 clearInterval(poll);
-                document.getElementById('dl-status').textContent = 'Done!';
-                setTimeout(() => location.reload(), 1000);
+                bar.classList.remove('indeterminate');
+                bar.style.width = '100%';
+                document.getElementById('dl-status').textContent = `Done · ${secs}s`;
+                setTimeout(() => location.reload(), 1200);
             } else if (j.status === 'failed') {
                 clearInterval(poll);
-                document.getElementById('dl-status').textContent = 'Failed: ' + j.error;
+                bar.classList.remove('indeterminate');
+                document.getElementById('dl-status').textContent = 'Failed: ' + (j.error || 'unknown error');
             }
         }, 1000);
     });

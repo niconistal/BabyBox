@@ -61,14 +61,34 @@ def start_download(url: str, media_type: MediaType, db: Database) -> str:
     return job_id
 
 
+def _line_to_stage(line: str) -> Optional[str]:
+    """Map a raw yt-dlp output line to a friendly stage label for the UI."""
+    low = line.lower()
+    if "[jsc" in low or "solving js" in low or "challenge" in low:
+        return "Solving YouTube challenge… (slow, ~1 min)"
+    if "[extractaudio]" in low or "extracting audio" in low:
+        return "Converting to MP3…"
+    if "[merger]" in low or "merging formats" in low:
+        return "Merging audio/video…"
+    if "[download] destination" in low:
+        return "Downloading…"
+    if "writing" in low and "thumbnail" in low:
+        return "Saving thumbnail…"
+    if "extracting url" in low or "downloading webpage" in low or "downloading api" in low:
+        return "Fetching video info…"
+    return None
+
+
 def _download_worker(job: DownloadJob, db: Database):
     try:
         job.status = DownloadStatus.DOWNLOADING
 
-        # Fetch metadata first
+        # Fetch metadata first (this triggers the slow JS-challenge solve)
+        job.stage = "Fetching video info… (solving YouTube challenge, ~1 min)"
         meta = fetch_metadata(job.url)
         job.title = meta.get("title", "Unknown")
         duration = meta.get("duration")
+        job.stage = "Preparing download…"
 
         # Build output template
         safe_id = meta.get("id", job.id)
@@ -108,10 +128,16 @@ def _download_worker(job: DownloadJob, db: Database):
 
         for line in proc.stdout:
             line = line.strip()
+            if not line:
+                continue
+            stage = _line_to_stage(line)
+            if stage:
+                job.stage = stage
             if "[download]" in line and "%" in line:
                 try:
                     pct = line.split("%")[0].split()[-1]
                     job.progress = float(pct)
+                    job.stage = f"Downloading… {job.progress:.0f}%"
                 except (ValueError, IndexError):
                     pass
 
@@ -119,6 +145,8 @@ def _download_worker(job: DownloadJob, db: Database):
 
         if proc.returncode != 0:
             raise RuntimeError(f"yt-dlp exited with code {proc.returncode}")
+
+        job.stage = "Saving to library…"
 
         # Find the actual output file (yt-dlp may have merged)
         actual_file = _find_output_file(out_dir, safe_id, ext)
@@ -145,11 +173,13 @@ def _download_worker(job: DownloadJob, db: Database):
 
         job.media_id = media_id
         job.progress = 100.0
+        job.stage = "Done"
         job.status = DownloadStatus.COMPLETE
         logger.info("Download complete: %s -> media_id=%d", job.title, media_id)
 
     except Exception as e:
         logger.error("Download failed: %s", e)
+        job.stage = "Failed"
         job.status = DownloadStatus.FAILED
         job.error = str(e)
 

@@ -64,6 +64,7 @@ class DownloadJob:
     title: Optional[str] = None
     error: Optional[str] = None
     media_id: Optional[int] = None
+    stage: str = ""  # human-readable current step, for UI feedback
 
 
 @dataclass

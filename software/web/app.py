@@ -91,6 +91,7 @@ def create_app(db: Database, controller: Controller) -> Flask:
         return jsonify({
             "status": job.status.value,
             "progress": job.progress,
+            "stage": job.stage,
             "title": job.title,
             "error": job.error,
             "media_id": job.media_id,
