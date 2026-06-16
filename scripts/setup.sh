@@ -10,10 +10,13 @@ sudo apt update
 # is frozen and goes stale within weeks as YouTube changes, breaking downloads
 # (SABR / signature-extraction errors). We install the current standalone
 # binary below instead. mpv pulls in ffmpeg, which yt-dlp needs for audio
-# extraction.
+# extraction. libmpv-dev provides the libmpv shared library: the player uses
+# the python-mpv binding, which dlopen's libmpv at runtime, and the mpv CLI
+# package alone does NOT install it on Trixie (playback fails with "Cannot
+# find libmpv in the usual places").
 sudo apt install -y \
     python3-pip python3-venv \
-    mpv \
+    mpv libmpv-dev \
     pulseaudio pulseaudio-module-bluetooth \
     bluez \
     iw \
