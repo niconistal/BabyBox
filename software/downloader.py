@@ -12,6 +12,13 @@ from software.models import DownloadJob, DownloadStatus, Media, MediaType
 
 logger = logging.getLogger(__name__)
 
+# Base yt-dlp invocation. --remote-components ejs:github lets yt-dlp fetch (and
+# cache) YouTube's JS challenge-solver script, which the deno runtime then runs.
+# The pip/source yt-dlp does not bundle it (unlike the standalone binary), so
+# without this every extraction fails with "n challenge solving failed ->
+# This video is not available".
+YT_DLP = ["yt-dlp", "--remote-components", "ejs:github"]
+
 # In-memory job tracker
 _jobs: dict[str, DownloadJob] = {}
 _jobs_lock = threading.Lock()
@@ -26,10 +33,11 @@ def fetch_metadata(url: str) -> dict:
     """Fetch video metadata without downloading."""
     try:
         result = subprocess.run(
-            ["yt-dlp", "--dump-json", "--no-download", url],
-            # Solving YouTube's JS challenge via deno takes ~50s on a Pi Zero
-            # 2 W, so 30s was too tight; give it generous headroom.
-            capture_output=True, text=True, timeout=120,
+            [*YT_DLP, "--dump-json", "--no-download", url],
+            # Solving YouTube's JS challenge via deno is slow on a Pi Zero 2 W
+            # (~50s healthy, longer under memory pressure), so give it generous
+            # headroom rather than failing a download that would have succeeded.
+            capture_output=True, text=True, timeout=180,
         )
         if result.returncode != 0:
             raise RuntimeError(result.stderr.strip())
@@ -77,7 +85,7 @@ def _download_worker(job: DownloadJob, db: Database):
         thumb_path = THUMBNAIL_DIR / f"{safe_id}.jpg"
 
         cmd = [
-            "yt-dlp",
+            *YT_DLP,
             "-f", format_arg,
             "--newline",
             "--write-thumbnail",

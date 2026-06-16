@@ -33,23 +33,28 @@ sudo raspi-config nonint do_spi 0
 echo "Unblocking Bluetooth radio (rfkill)..."
 sudo rfkill unblock bluetooth
 
-# yt-dlp + JS runtime. The app calls bare `yt-dlp` via PATH, so install the
-# current standalone binary into /usr/local/bin (ahead of any apt copy on the
-# default systemd PATH). Modern yt-dlp also needs a JavaScript runtime to solve
-# YouTube's signature challenges — without one it falls back to limited clients
-# and fails with "This video is not available". deno is yt-dlp's default,
-# auto-detected runtime. Run `yt-dlp -U` periodically to keep it current.
-echo "Installing yt-dlp (latest) + deno JS runtime..."
+# yt-dlp + JS runtime. The app calls bare `yt-dlp` via PATH.
+#
+# Install yt-dlp from pip into /usr/local (ahead of any apt copy on the default
+# systemd PATH), NOT the standalone binary: the PyInstaller binary self-extracts
+# ~40MB into tmpfs /tmp on every run, which fails under memory pressure on the
+# 512MB Pi Zero 2 W ("PYI ... decompression resulted in return code -1"). The
+# pip build runs as a plain Python script with no self-extraction.
+#
+# Modern yt-dlp also needs a JavaScript runtime (deno) to solve YouTube's
+# signature challenges, plus the EJS challenge-solver script which the pip build
+# does not bundle — the app passes `--remote-components ejs:github` at runtime so
+# yt-dlp downloads/caches it. Without the runtime+solver, extraction fails with
+# "This video is not available". Run `pip install -U yt-dlp` periodically to keep
+# it current.
+echo "Installing yt-dlp (pip) + deno JS runtime..."
+sudo pip install --break-system-packages --ignore-installed yt-dlp
 ARCH=$(uname -m)
 case "$ARCH" in
-    aarch64) YTDLP_ASSET=yt-dlp_linux_aarch64; DENO_ASSET=deno-aarch64-unknown-linux-gnu.zip ;;
-    armv7l)  YTDLP_ASSET=yt-dlp_linux_armv7l; DENO_ASSET="" ;;
-    x86_64)  YTDLP_ASSET=yt-dlp_linux;         DENO_ASSET=deno-x86_64-unknown-linux-gnu.zip ;;
-    *)       YTDLP_ASSET=yt-dlp;               DENO_ASSET="" ;;
+    aarch64) DENO_ASSET=deno-aarch64-unknown-linux-gnu.zip ;;
+    x86_64)  DENO_ASSET=deno-x86_64-unknown-linux-gnu.zip ;;
+    *)       DENO_ASSET="" ;;
 esac
-sudo curl -fL --retry 3 -o /usr/local/bin/yt-dlp \
-    "https://github.com/yt-dlp/yt-dlp/releases/latest/download/$YTDLP_ASSET"
-sudo chmod 0755 /usr/local/bin/yt-dlp
 if [ -n "$DENO_ASSET" ]; then
     curl -fL --retry 3 -o /tmp/deno.zip \
         "https://github.com/denoland/deno/releases/latest/download/$DENO_ASSET"
@@ -59,6 +64,18 @@ if [ -n "$DENO_ASSET" ]; then
     rm -rf /tmp/deno.zip /tmp/deno-extract
 else
     echo "WARNING: no deno build for $ARCH — YouTube downloads may fail without a JS runtime."
+fi
+
+# The Pi Zero 2 W has 512MB RAM; the default image only has (compressed) zram
+# swap, which saturates while deno solves YouTube's JS challenge and causes
+# downloads to stall/OOM. Add a disk-backed swapfile for real spill room.
+if [ ! -f /swapfile ]; then
+    echo "Creating 1GB swapfile (Pi Zero 2 W memory headroom)..."
+    sudo fallocate -l 1G /swapfile || sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    grep -q "^/swapfile" /etc/fstab || echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab >/dev/null
 fi
 
 # Create media directories
