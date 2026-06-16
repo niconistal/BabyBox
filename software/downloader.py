@@ -27,7 +27,9 @@ def fetch_metadata(url: str) -> dict:
     try:
         result = subprocess.run(
             ["yt-dlp", "--dump-json", "--no-download", url],
-            capture_output=True, text=True, timeout=30,
+            # Solving YouTube's JS challenge via deno takes ~50s on a Pi Zero
+            # 2 W, so 30s was too tight; give it generous headroom.
+            capture_output=True, text=True, timeout=120,
         )
         if result.returncode != 0:
             raise RuntimeError(result.stderr.strip())

@@ -14,6 +14,11 @@ Environment=XDG_RUNTIME_DIR=/run/user/1000
 # root. We keep User=pi (required to reach the pi user's PulseAudio/Bluetooth
 # session above), so grant just the two caps needed to open and mmap /dev/mem.
 AmbientCapabilities=CAP_SYS_RAWIO CAP_DAC_OVERRIDE
+# yt-dlp spawns deno to solve YouTube's JS challenges. On the Pi Zero 2 W
+# (512MB RAM) deno's default V8 heap balloons and the kernel OOM-kills it
+# (deno exits -9 -> "video not available"). Cap the old-space heap so it stays
+# within available memory; 128MB is enough to solve the challenge here.
+Environment=DENO_V8_FLAGS=--max-old-space-size=128
 ExecStart=/usr/bin/python3 -m software.main
 Restart=on-failure
 RestartSec=5
