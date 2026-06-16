@@ -10,6 +10,10 @@ WorkingDirectory=/home/pi/babybox
 Environment=BABYBOX_ENV=pi
 # mpv and pactl talk to the pi user's PulseAudio session
 Environment=XDG_RUNTIME_DIR=/run/user/1000
+# rpi_ws281x drives the WS281x LEDs via PWM+DMA through /dev/mem, which needs
+# root. We keep User=pi (required to reach the pi user's PulseAudio/Bluetooth
+# session above), so grant just the two caps needed to open and mmap /dev/mem.
+AmbientCapabilities=CAP_SYS_RAWIO CAP_DAC_OVERRIDE
 ExecStart=/usr/bin/python3 -m software.main
 Restart=on-failure
 RestartSec=5

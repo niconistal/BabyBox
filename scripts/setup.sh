@@ -25,7 +25,11 @@ mkdir -p /home/pi/babybox/media/{audio,video,thumbnails}
 # Install Python dependencies
 echo "Installing Python packages..."
 cd /home/pi/babybox
-python3 -m pip install --user flask python-mpv yt-dlp mfrc522 rpi_ws281x RPi.GPIO
+# --break-system-packages: Raspberry Pi OS (Bookworm+/Trixie) marks the system
+# Python as externally-managed (PEP 668); --user installs are refused without it.
+# Packages land in the pi user's ~/.local, which the systemd services (User=pi,
+# system /usr/bin/python3) pick up via the per-user site automatically.
+python3 -m pip install --user --break-system-packages flask python-mpv yt-dlp mfrc522 rpi_ws281x RPi.GPIO
 
 # Install systemd services
 echo "Installing systemd services..."
