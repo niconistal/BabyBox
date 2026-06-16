@@ -148,6 +148,20 @@ input, select {
 }
 input:focus, select:focus { outline: 2px solid var(--primary); border-color: transparent; }
 
+/* Volume slider */
+.volume-row { display: flex; align-items: center; gap: 0.75rem; }
+.volume-icon { font-size: 1.2rem; }
+.volume-row input[type="range"] {
+    flex: 1;
+    padding: 0;
+    border: none;
+    accent-color: var(--primary);
+    height: 6px;
+    cursor: pointer;
+}
+.volume-row input[type="range"]:focus { outline: none; }
+#volume-value { min-width: 3rem; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+
 /* Media grid */
 .media-grid { display: flex; flex-direction: column; gap: 0.75rem; }
 .media-item {

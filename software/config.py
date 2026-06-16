@@ -39,6 +39,7 @@ DEFAULT_SETTINGS = {
     "daily_video_limit_minutes": "60",
     "limit_reset_hour": "6",
     "bt_speaker_mac": "",
+    "volume": "80",
 }
 
 # Web server

@@ -58,6 +58,13 @@ class Controller:
     def current_media_id(self) -> Optional[int]:
         return self._current_media_id
 
+    @property
+    def volume(self) -> int:
+        return self._player.volume
+
+    def set_volume(self, level: int):
+        self._player.set_volume(level)
+
     def on_tag_scanned(self, uid: str):
         """Called by RFID thread when a tag is detected."""
         self._last_scanned_uid = uid
@@ -199,6 +206,7 @@ class Controller:
             "state": self._state.value,
             "register_mode": self._register_mode,
             "last_scanned_uid": self._last_scanned_uid,
+            "volume": self._player.volume,
         }
         if self._current_media_id:
             media = self._db.get_media(self._current_media_id)

@@ -6,6 +6,7 @@ import time
 from software import bluetooth
 from software.config import (
     BUTTON_POLL_INTERVAL,
+    DEFAULT_SETTINGS,
     RFID_POLL_INTERVAL,
     WEB_HOST,
     WEB_PORT,
@@ -61,8 +62,9 @@ def main():
     # Create hardware
     rfid, leds, buzzer, buttons = create_all()
 
-    # Create player and controller
-    player = Player()
+    # Create player and controller (restore saved volume)
+    volume = int(db.get_setting("volume") or DEFAULT_SETTINGS["volume"])
+    player = Player(volume=volume)
     controller = Controller(db, player, leds, buzzer)
 
     # Start RFID thread

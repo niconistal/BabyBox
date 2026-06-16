@@ -24,6 +24,16 @@
 </div>
 
 <div class="card">
+    <h2>Volume</h2>
+    <div class="volume-row">
+        <span class="volume-icon">🔈</span>
+        <input type="range" id="volume-slider" min="0" max="100" step="5" value="{{ status.volume }}">
+        <span class="volume-icon">🔊</span>
+        <span id="volume-value">{{ status.volume }}%</span>
+    </div>
+</div>
+
+<div class="card">
     <h2>Today's Video Usage</h2>
     <div class="stats-row">
         <div class="stat">
@@ -44,11 +54,28 @@
 
 {% block scripts %}
 <script>
+    // Volume slider
+    const volSlider = document.getElementById('volume-slider');
+    const volValue = document.getElementById('volume-value');
+    volSlider.addEventListener('input', () => { volValue.textContent = volSlider.value + '%'; });
+    volSlider.addEventListener('change', async () => {
+        await fetch('/api/volume', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ volume: parseInt(volSlider.value, 10) }),
+        });
+    });
+
     // Poll status every 3 seconds
     setInterval(async () => {
         const res = await fetch('/api/status');
         const s = await res.json();
         document.getElementById('state-badge').textContent = s.state;
+        // Keep slider in sync (e.g. changed from another device), but not while dragging
+        if (document.activeElement !== volSlider && s.volume != null) {
+            volSlider.value = s.volume;
+            volValue.textContent = s.volume + '%';
+        }
         document.getElementById('video-count').textContent = s.video_stats.count;
         document.getElementById('video-minutes').textContent = s.video_stats.total_minutes;
 

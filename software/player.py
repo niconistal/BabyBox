@@ -10,11 +10,16 @@ logger = logging.getLogger(__name__)
 
 
 class Player:
-    def __init__(self, on_playback_end: Optional[Callable] = None):
+    def __init__(self, on_playback_end: Optional[Callable] = None, volume: int = 80):
         self._on_playback_end = on_playback_end
         self._mpv = None
         self._lock = threading.Lock()
         self._playing = False
+        self._volume = self._clamp(volume)
+
+    @staticmethod
+    def _clamp(level: int) -> int:
+        return max(0, min(100, int(level)))
 
     def _ensure_mpv(self):
         if self._mpv is not None:
@@ -23,6 +28,7 @@ class Player:
             import mpv
             kwargs = {
                 "audio_device": MPV_AUDIO_DEVICE,
+                "volume": self._volume,
                 "input_default_bindings": False,
                 "input_vo_keyboard": False,
             }
@@ -81,6 +87,18 @@ class Player:
             if self._mpv and self._playing and not isinstance(self._mpv, _StubMPV):
                 self._mpv.pause = not self._mpv.pause
                 logger.info("Pause toggled: %s", self._mpv.pause)
+
+    def set_volume(self, level: int):
+        """Set output volume (0-100). Applies live and to future playback."""
+        with self._lock:
+            self._volume = self._clamp(level)
+            if self._mpv and not isinstance(self._mpv, _StubMPV):
+                self._mpv.volume = self._volume
+            logger.info("Volume set to %d", self._volume)
+
+    @property
+    def volume(self) -> int:
+        return self._volume
 
     @property
     def is_playing(self) -> bool:

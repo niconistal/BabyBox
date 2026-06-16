@@ -163,6 +163,18 @@ def create_app(db: Database, controller: Controller) -> Flask:
             db.set_setting(key, str(value))
         return jsonify({"ok": True})
 
+    @app.route("/api/volume", methods=["POST"])
+    def api_set_volume():
+        data = request.get_json()
+        try:
+            level = int(data.get("volume"))
+        except (TypeError, ValueError):
+            return jsonify({"error": "volume must be an integer 0-100"}), 400
+        level = max(0, min(100, level))
+        controller.set_volume(level)
+        db.set_setting("volume", str(level))
+        return jsonify({"ok": True, "volume": level})
+
     # -- API: Bluetooth --
 
     @app.route("/api/bluetooth/scan", methods=["POST"])
