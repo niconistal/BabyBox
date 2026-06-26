@@ -21,16 +21,22 @@ const C = {
   diffuser:0xFFFFFF,
 };
 
+// Hub (figurine hole) center and the stack heights — kept in sync with the
+// SCAD assembly(): box 90x90, body_h 32, top_plate_h 10, well_floor 5.
+const HX = 45, HY = 50;          // figurine hole center
+const Z_TOP = 47;                // top of the body = bottom of the top plate
+const BTN1 = 28, BTN2 = 62, BTN_Y = 15;
+
 // Printed parts: file, color, base position (mm, Z-up — matches the SCAD
 // assembly() offsets), an explode vector, and whether it's the ghostable shell.
 const PARTS = [
-  { key:'tray',     file:'v3-tray.stl',        color:C.tray, pos:[0,0,0],     explode:[0,0,-34], shell:true },
-  { key:'body',     file:'v3-body.stl',        color:C.body, pos:[0,0,5],     explode:[0,0,-10], shell:true },
-  { key:'top',      file:'v3-top.stl',         color:C.top,  pos:[0,0,83],    explode:[0,0,34],  shell:true },
-  { key:'diffuser', file:'v3-diffuser.stl',    color:C.diffuser, pos:[42,52,95], explode:[0,0,60], glow:true },
-  { key:'lid',      file:'v3-lid.stl',         color:C.lid,  pos:[42,52,101], explode:[0,0,88] },
-  { key:'kplay',    file:'v3-keycap-play.stl', color:C.keycap, pos:[25,15,99], explode:[0,0,56] },
-  { key:'kstop',    file:'v3-keycap-stop.stl', color:C.keycap, pos:[59,15,99], explode:[0,0,56] },
+  { key:'tray',     file:'v3-tray.stl',        color:C.tray, pos:[0,0,0],         explode:[0,0,-30], shell:true },
+  { key:'body',     file:'v3-body.stl',        color:C.body, pos:[0,0,5],         explode:[0,0,-10], shell:true },
+  { key:'top',      file:'v3-top.stl',         color:C.top,  pos:[0,0,Z_TOP-10],  explode:[0,0,30],  shell:true },
+  { key:'diffuser', file:'v3-diffuser.stl',    color:C.diffuser, pos:[HX,HY,Z_TOP], explode:[0,0,58], glow:true },
+  { key:'fig',      file:'v3-figurine.stl',    color:C.lid,  pos:[HX,HY,42],       explode:[0,0,86] },
+  { key:'kplay',    file:'v3-keycap-play.stl', color:C.keycap, pos:[BTN1,BTN_Y,44], explode:[0,0,54] },
+  { key:'kstop',    file:'v3-keycap-stop.stl', color:C.keycap, pos:[BTN2,BTN_Y,44], explode:[0,0,54] },
 ];
 
 const mount = document.getElementById('viewer');
@@ -125,34 +131,33 @@ function init(mount) {
     const dark = (c=0x1d1f24, r=0.55, m=0.2) =>
       new THREE.MeshStandardMaterial({ color:c, roughness:r, metalness:m });
 
-    // Raspberry Pi Zero 2 W on the tray standoffs
-    elec.add(box(65,30,1.6, 42,62,9.8, dark(0x2f7d46,0.5)));     // green PCB
-    elec.add(box(50,5,7,   42,50,14,  dark(0x14161a,0.4,0.3)));  // GPIO header
-    elec.add(box(10,10,2,  42,62,11.4,dark(0x0c0c0c)));          // SoC
-    [ -6, 8, 20 ].forEach(dx => elec.add(box(8,4.5,3, 42+dx,76,11.5, dark(0xb9c0c8,0.3,0.8)))); // back ports
+    // Raspberry Pi Zero 2 W on the tray standoffs (sits at the back)
+    elec.add(box(65,30,1.6, 45,68,9.8, dark(0x2f7d46,0.5)));     // green PCB
+    elec.add(box(10,10,2,  45,68,11.4,dark(0x0c0c0c)));          // SoC
+    [ -6, 8, 20 ].forEach(dx => elec.add(box(8,4.5,3, 45+dx,82,11.5, dark(0xb9c0c8,0.3,0.8)))); // back ports
 
     // Buzzer in the tray cradle
     elec.add(cyl(6,9, 16,16,9.6, dark(0x101010,0.45)));
 
-    // MFRC522 under the top plate (antenna up)
-    elec.add(box(60,40,1.6, 42,52,90.2, dark(0x12428f,0.5)));    // blue PCB
-    elec.add(box(20,2.6,8,  42,33,86,   dark(0x0c0c0c)));        // header pins down
+    // MFRC522 — mounted FLUSH under the hole floor (antenna up, reads close)
+    elec.add(box(60,40,1.6, HX,HY,Z_TOP-1.0, dark(0x12428f,0.5)));  // blue PCB
+    elec.add(box(22,3,5,    HX,HY-12,Z_TOP-4, dark(0x0c0c0c)));     // solder/pads below
 
     // MX switches under the keycaps
-    elec.add(box(14,14,11, 25,15,91.5, dark(0x161616,0.5)));
-    elec.add(box(14,14,11, 59,15,91.5, dark(0x161616,0.5)));
+    elec.add(box(14,14,11, BTN1,BTN_Y,42, dark(0x161616,0.5)));
+    elec.add(box(14,14,11, BTN2,BTN_Y,42, dark(0x161616,0.5)));
 
-    // WS2812B halo — 8 emissive LEDs wrapped around the hub
+    // WS2812B — 8 emissive LEDs wrapped around the raised ring
     const hue = [0,0.08,0.14,0.33,0.5,0.6,0.75,0.9];
     for (let i = 0; i < 8; i++) {
       const a = (i/8)*Math.PI*2;
-      const r = 21, x = 42 + r*Math.cos(a), y = 52 + r*Math.sin(a);
+      const r = 21, x = HX + r*Math.cos(a), y = HY + r*Math.sin(a);
       const m = new THREE.MeshStandardMaterial({
         color: new THREE.Color().setHSL(hue[i], 0.85, 0.6),
         emissive: new THREE.Color().setHSL(hue[i], 0.9, 0.55),
         emissiveIntensity: 1.3, roughness: 0.4,
       });
-      const led = box(2.6,4.2,10, x,y,100, m);
+      const led = box(2.6,4.2,10, x,y,Z_TOP+5, m);
       led.rotation.z = a;
       elec.add(led);
     }
@@ -202,7 +207,7 @@ function init(mount) {
     shellMats.forEach(m => { m.transparent = on; m.opacity = on ? 0.30 : 1.0; m.depthWrite = !on; });
     if (diffuserMat) { diffuserMat.emissiveIntensity = on ? 0.9 : 0; diffuserMat.opacity = on ? 0.55 : 0.4; }
     ledLight.intensity = on ? 1.1 : 0;
-    ledLight.position.set(42, 52, 102);
+    ledLight.position.set(HX, HY, Z_TOP + 6);
   }
   let explodeAmt = 0, explodeTarget = 0;
   function applyExplode(t) { explodeTarget = t; }
@@ -242,7 +247,7 @@ function init(mount) {
     elec.children.forEach(o => {
       if (o.userData && o.userData.base) {
         // electronics drift with the nearest shell layer when exploded
-        const dz = o.userData.base.z > 80 ? 34 : (o.userData.base.z < 20 ? -22 : 0);
+        const dz = o.userData.base.z > 40 ? 30 : (o.userData.base.z < 20 ? -28 : 0);
         o.position.z = o.userData.base.z + dz * explodeAmt;
       }
     });

@@ -200,7 +200,7 @@ scripts, which makes it a natural fit for AI generation.
 
 | File                     | What it defines                                    |
 |--------------------------|----------------------------------------------------|
-| `babybox-case-v3.scad`  | **Current.** "Tower" case (84x84x~95): 4 parts (tray / body / top plate / center lid) + diffuser ring. Soldered build, heat-set inserts, MX buttons, LED halo ring. `render_part` selects the part |
+| `babybox-case-v3.scad`  | **Current.** Compact case (90x90, body ~47mm): 3 parts (tray / body / top plate) + sealed diffuser ring. Recessed figurine hole with the LED ring + flush RFID; soldered build, heat-set inserts, MX buttons, tiny power-cable hole. `render_part` selects the part |
 | `keycaps.scad`          | Big round custom MX keycaps (play/pause + stop) with engraved icons |
 | `common-params.scad`    | Shared dims: magnets, RFID, MFRC522, screws, **+ v3: heat-set inserts, WS2812B strip, MX switch/keycap** |
 | `babybox-case-v2.scad`  | v2 (reference). Compact "Pebble" face case (105x85x54), body + lid in one file |
