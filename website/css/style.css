@@ -1387,3 +1387,85 @@ p {
 
 /* --- Google Fonts Fallback --- */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ============================================================
+   3D Viewer (viewer.html)
+   ============================================================ */
+.viewer-stage {
+  position: relative;
+  width: 100%;
+  height: min(64vh, 600px);
+  background: radial-gradient(circle at 50% 32%, #FFFFFF 0%, var(--color-bg) 72%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+}
+.viewer-stage:active { cursor: grabbing; }
+.viewer-stage canvas { display: block; width: 100%; height: 100%; }
+.viewer-hint {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  font-size: 0.8rem; color: var(--color-text-light);
+  background: rgba(255,255,255,0.72); padding: 4px 14px;
+  border-radius: var(--radius-full); pointer-events: none; white-space: nowrap;
+}
+.viewer-status {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 14px;
+  color: var(--color-text-light); font-weight: 600;
+}
+.viewer-spinner {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 4px solid rgba(108,99,255,0.2); border-top-color: var(--color-primary);
+  animation: vspin 0.9s linear infinite;
+}
+@keyframes vspin { to { transform: rotate(360deg); } }
+
+.viewer-controls {
+  display: flex; flex-wrap: wrap; gap: var(--space-md);
+  align-items: center; justify-content: center; margin-top: var(--space-lg);
+}
+.vtoggle {
+  position: relative; display: inline-flex; align-items: center; gap: 10px;
+  cursor: pointer; background: var(--color-white); border: 1px solid var(--color-border);
+  padding: 8px 16px; border-radius: var(--radius-full); font-weight: 600;
+  font-size: 0.92rem; box-shadow: var(--shadow-sm); user-select: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.vtoggle:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); }
+.vtoggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+.vtrack {
+  width: 38px; height: 22px; border-radius: var(--radius-full);
+  background: var(--color-border); position: relative; transition: background .2s; flex: none;
+}
+.vtrack::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px;
+  border-radius: 50%; background: #fff; box-shadow: var(--shadow-sm); transition: transform .2s;
+}
+.vtoggle input:checked + .vtrack { background: var(--color-primary); }
+.vtoggle input:checked + .vtrack::after { transform: translateX(16px); }
+.vtoggle input:focus-visible + .vtrack { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+.part-legend {
+  display: flex; flex-wrap: wrap; gap: var(--space-md) var(--space-lg);
+  justify-content: center; margin-top: var(--space-xl);
+}
+.part-legend span { display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.88rem; color: var(--color-text-light); font-weight: 600; }
+.swatch { width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); flex: none; }
+
+.render-gallery {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl); margin-top: var(--space-xl);
+}
+.render-gallery figure {
+  margin: 0; background: var(--color-white); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);
+}
+.render-gallery img { display: block; width: 100%; height: auto; background: var(--color-bg); }
+.render-gallery figcaption {
+  padding: var(--space-md); font-size: 0.9rem; color: var(--color-text-light);
+  font-weight: 600; text-align: center;
+}
