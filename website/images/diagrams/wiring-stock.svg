@@ -1,0 +1,324 @@
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg" font-family="Inter, -apple-system, 'Segoe UI', sans-serif">
+<defs>
+  <linearGradient id="pcbGreen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#3E9A52"/><stop offset="1" stop-color="#27713A"/>
+  </linearGradient>
+  <linearGradient id="pcbBlue" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#2C6FC4"/><stop offset="1" stop-color="#174E96"/>
+  </linearGradient>
+  <radialGradient id="coneGrad" cx="0.38" cy="0.34" r="0.9">
+    <stop offset="0" stop-color="#6E747A"/><stop offset="0.7" stop-color="#3C4146"/><stop offset="1" stop-color="#26292C"/>
+  </radialGradient>
+  <radialGradient id="capGrad" cx="0.35" cy="0.3" r="1">
+    <stop offset="0" stop-color="#53595F"/><stop offset="1" stop-color="#1E2124"/>
+  </radialGradient>
+</defs>
+<rect width="1000" height="720" rx="16" fill="#FDFBF7"/>
+<text x="500.0" y="34" text-anchor="middle" font-size="17" font-weight="800" fill="#2D3436">BabyBox Wiring — Standard Build</text><text x="500.0" y="54" text-anchor="middle" font-size="11.5" fill="#636E72">All components connect to the Pi&#8217;s 40-pin header. Audio is wireless (Bluetooth) &#8212; no speaker wiring.</text>
+<g transform="translate(290,470)">
+<rect x="3" y="5" width="420" height="190" rx="14" fill="#000" opacity="0.10"/>
+<rect width="420" height="190" rx="14" fill="url(#pcbGreen)" stroke="#1B4D2A" stroke-width="2"/>
+<circle cx="16" cy="16" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="16" cy="16" r="3.5" fill="#FAF6EC"/>
+<circle cx="404" cy="16" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="404" cy="16" r="3.5" fill="#FAF6EC"/>
+<circle cx="16" cy="174" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="16" cy="174" r="3.5" fill="#FAF6EC"/>
+<circle cx="404" cy="174" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="404" cy="174" r="3.5" fill="#FAF6EC"/>
+<rect x="16" y="10" width="388" height="40" rx="4" fill="#1A1A1A"/>
+<rect x="30.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="30.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="48.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="48.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="67.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="67.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="85.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="85.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="104.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="104.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="123.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="123.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="141.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="141.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="160.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="160.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="178.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="178.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="197.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="197.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="216.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="216.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="234.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="234.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="253.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="253.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="271.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="271.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="290.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="290.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="309.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="309.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="327.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="327.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="346.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="346.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="364.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="364.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="383.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="383.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="27.7" y="33.4" width="11.2" height="11.2" fill="none" stroke="#FFF" stroke-width="1.2"/>
+<text x="21.299999999999997" y="55" font-family="'SF Mono', 'Fira Code', monospace" font-size="9" fill="#CFE8D5">1</text>
+<text x="392.70000000000005" y="-3" font-family="'SF Mono', 'Fira Code', monospace" font-size="9" fill="#CFE8D5">40</text>
+<rect x="178.0" y="92" width="64" height="64" rx="4" fill="#2B2B2B" stroke="#111" stroke-width="1"/>
+<text x="210.0" y="121" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="8" fill="#888">BCM2710A1</text>
+<text x="210.0" y="133" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7" fill="#666">+ 512MB RAM</text>
+<rect x="-6" y="76" width="46" height="40" rx="3" fill="#9DA5AB" stroke="#6B7176" stroke-width="1.5"/>
+<text x="18" y="100" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" fill="#3A3F44" font-weight="600">microSD</text>
+<rect x="406" y="72" width="14" height="48" rx="2" fill="#D8D2C4" stroke="#A89F8C" stroke-width="1"/>
+<rect x="96" y="174" width="64" height="22" rx="3" fill="#AEB6BC" stroke="#787F85" stroke-width="1.5"/>
+<rect x="102" y="180" width="52" height="10" rx="2" fill="#42484D"/>
+<text x="128.0" y="212" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="9" fill="#636E72">mini-HDMI</text>
+<rect x="218" y="174" width="44" height="22" rx="3" fill="#AEB6BC" stroke="#787F85" stroke-width="1.5"/>
+<rect x="224" y="180" width="32" height="10" rx="2" fill="#42484D"/>
+<text x="240.0" y="212" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="9" fill="#636E72">USB (OTG)</text>
+<rect x="286" y="174" width="44" height="22" rx="3" fill="#AEB6BC" stroke="#787F85" stroke-width="1.5"/>
+<rect x="292" y="180" width="32" height="10" rx="2" fill="#42484D"/>
+<text x="308.0" y="212" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="9" fill="#636E72">USB (PWR)</text>
+<text x="210.0" y="78" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#E8F5EC">Raspberry Pi Zero 2 W</text>
+<circle cx="237.9" cy="21" r="6.5" fill="none" stroke="#E0A800" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="237.9" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">24</text><text x="237.9" y="7" text-anchor="middle" fill="#B38600">24</text></g>
+<circle cx="237.9" cy="39" r="6.5" fill="none" stroke="#E07800" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="237.9" y="57" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">23</text><text x="237.9" y="57" text-anchor="middle" fill="#B36000">23</text></g>
+<circle cx="200.70000000000002" cy="39" r="6.5" fill="none" stroke="#2E9E44" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="200.70000000000002" y="57" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">19</text><text x="200.70000000000002" y="57" text-anchor="middle" fill="#247E36">19</text></g>
+<circle cx="219.3" cy="39" r="6.5" fill="none" stroke="#2F5FD0" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="219.3" y="57" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">21</text><text x="219.3" y="57" text-anchor="middle" fill="#254CA6">21</text></g>
+<circle cx="219.3" cy="21" r="6.5" fill="none" stroke="#E8E8E8" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="219.3" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">22</text><text x="219.3" y="7" text-anchor="middle" fill="#B9B9B9">22</text></g>
+<circle cx="182.10000000000002" cy="39" r="6.5" fill="none" stroke="#D32F2F" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="182.10000000000002" y="57" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">17</text><text x="182.10000000000002" y="57" text-anchor="middle" fill="#A82525">17</text></g>
+<circle cx="70.5" cy="21" r="6.5" fill="none" stroke="#37352F" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="70.5" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">6</text><text x="70.5" y="7" text-anchor="middle" fill="#2C2A25">6</text></g>
+<circle cx="126.30000000000001" cy="21" r="6.5" fill="none" stroke="#2E9E44" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="126.30000000000001" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">12</text><text x="126.30000000000001" y="7" text-anchor="middle" fill="#247E36">12</text></g>
+<circle cx="33.3" cy="21" r="6.5" fill="none" stroke="#D32F2F" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="33.3" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">2</text><text x="33.3" y="7" text-anchor="middle" fill="#A82525">2</text></g>
+<circle cx="107.7" cy="39" r="6.5" fill="none" stroke="#37352F" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="107.7" y="57" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">9</text><text x="107.7" y="57" text-anchor="middle" fill="#2C2A25">9</text></g>
+<circle cx="126.30000000000001" cy="39" r="6.5" fill="none" stroke="#E0A800" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="126.30000000000001" y="57" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">11</text><text x="126.30000000000001" y="57" text-anchor="middle" fill="#B38600">11</text></g>
+<circle cx="144.9" cy="21" r="6.5" fill="none" stroke="#37352F" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="144.9" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">14</text><text x="144.9" y="7" text-anchor="middle" fill="#2C2A25">14</text></g>
+<circle cx="144.9" cy="39" r="6.5" fill="none" stroke="#E0A800" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="144.9" y="57" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">13</text><text x="144.9" y="57" text-anchor="middle" fill="#B38600">13</text></g>
+<circle cx="200.70000000000002" cy="21" r="6.5" fill="none" stroke="#37352F" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="200.70000000000002" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">20</text><text x="200.70000000000002" y="7" text-anchor="middle" fill="#2C2A25">20</text></g>
+<circle cx="312.3" cy="21" r="6.5" fill="none" stroke="#E0A800" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="312.3" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">32</text><text x="312.3" y="7" text-anchor="middle" fill="#B38600">32</text></g>
+<circle cx="330.90000000000003" cy="21" r="6.5" fill="none" stroke="#37352F" stroke-width="2.5"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="8.5" font-weight="700"><text x="330.90000000000003" y="7" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="2.5" paint-order="stroke">34</text><text x="330.90000000000003" y="7" text-anchor="middle" fill="#2C2A25">34</text></g>
+</g>
+<g transform="translate(40,120)">
+<rect x="3" y="5" width="200" height="132" rx="10" fill="#000" opacity="0.10"/>
+<rect width="200" height="132" rx="10" fill="url(#pcbBlue)" stroke="#0D3A78" stroke-width="2"/>
+<rect x="10" y="10" width="180" height="98" rx="8" fill="none" stroke="#7FB3E8" stroke-width="2.2" opacity="0.85"/>
+<rect x="17" y="17" width="166" height="84" rx="8" fill="none" stroke="#7FB3E8" stroke-width="2.2" opacity="0.6499999999999999"/>
+<rect x="24" y="24" width="152" height="70" rx="8" fill="none" stroke="#7FB3E8" stroke-width="2.2" opacity="0.44999999999999996"/>
+<rect x="78.0" y="42.0" width="44" height="34" rx="3" fill="#1E1E1E" stroke="#000" stroke-width="1"/>
+<text x="100.0" y="62.0" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#999">MFRC522</text>
+<text x="100.0" y="36" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#D8E9FB">RFID-RC522</text>
+<rect x="16" y="120" width="168" height="12" rx="2" fill="#1A1A1A"/>
+<rect x="25.4" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="28.0" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 28.0 115)">SDA</text>
+<rect x="46.0" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="48.6" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 48.6 115)">SCK</text>
+<rect x="66.5" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="69.1" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 69.1 115)">MOSI</text>
+<rect x="87.1" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="89.7" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 89.7 115)">MISO</text>
+<rect x="107.7" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="110.3" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 110.3 115)">IRQ</text>
+<rect x="128.3" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="130.9" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 130.9 115)">GND</text>
+<rect x="148.8" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="151.4" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 151.4 115)">RST</text>
+<rect x="169.4" y="123" width="5.2" height="7" fill="#E6C35C"/>
+<text x="172.0" y="115" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#BBD8F5" transform="rotate(-90 172.0 115)">3.3V</text>
+</g>
+<g transform="translate(330,110)">
+<rect x="3" y="4" width="230" height="40" rx="6" fill="#000" opacity="0.10"/>
+<rect width="230" height="40" rx="6" fill="#FAFAF5" stroke="#C9C4B8" stroke-width="2"/>
+<rect x="-6" y="5" width="10" height="6" rx="1.5" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<text x="10" y="11" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#8A8474">5V</text>
+<rect x="-6" y="17" width="10" height="6" rx="1.5" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<text x="10" y="23" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#8A8474">DIN</text>
+<rect x="-6" y="29" width="10" height="6" rx="1.5" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<text x="10" y="35" font-family="'SF Mono', 'Fira Code', monospace" font-size="7.5" fill="#8A8474">GND</text>
+<rect x="38.0" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="47.0" cy="20.0" r="6" fill="#FF6B6B" opacity="0.85"/>
+<circle cx="47.0" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<rect x="62.5" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="71.5" cy="20.0" r="6" fill="#FFB84D" opacity="0.85"/>
+<circle cx="71.5" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<rect x="87.0" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="96.0" cy="20.0" r="6" fill="#FFE66D" opacity="0.85"/>
+<circle cx="96.0" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<rect x="111.5" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="120.5" cy="20.0" r="6" fill="#6BCB77" opacity="0.85"/>
+<circle cx="120.5" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<rect x="136.0" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="145.0" cy="20.0" r="6" fill="#4ECDC4" opacity="0.85"/>
+<circle cx="145.0" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<rect x="160.5" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="169.5" cy="20.0" r="6" fill="#6C8EFF" opacity="0.85"/>
+<circle cx="169.5" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<rect x="185.0" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="194.0" cy="20.0" r="6" fill="#9B6BFF" opacity="0.85"/>
+<circle cx="194.0" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<rect x="209.5" y="11.0" width="18" height="18" rx="2" fill="#FFFDF2" stroke="#C9C4B8" stroke-width="1.2"/>
+<circle cx="218.5" cy="20.0" r="6" fill="#FF6BD6" opacity="0.85"/>
+<circle cx="218.5" cy="20.0" r="2.4" fill="#FFF" opacity="0.9"/>
+<text x="125.0" y="-8" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#5A5346">WS2812 LED strip (x8)</text>
+</g>
+<g transform="translate(660,120)">
+<rect x="2" y="3" width="44" height="44" rx="6" fill="#000" opacity="0.10"/>
+<rect width="44" height="44" rx="6" fill="#C7CCD1" stroke="#8E959B" stroke-width="2"/>
+<circle cx="6" cy="6" r="2.6" fill="#8E959B"/>
+<circle cx="38" cy="6" r="2.6" fill="#8E959B"/>
+<circle cx="6" cy="38" r="2.6" fill="#8E959B"/>
+<circle cx="38" cy="38" r="2.6" fill="#8E959B"/>
+<circle cx="22" cy="22" r="14" fill="#4ECDC4" stroke="#307F79" stroke-width="2"/>
+<text x="22" y="27" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#FFF" font-weight="700">&#9654;</text>
+</g>
+<g transform="translate(740,120)">
+<rect x="2" y="3" width="44" height="44" rx="6" fill="#000" opacity="0.10"/>
+<rect width="44" height="44" rx="6" fill="#C7CCD1" stroke="#8E959B" stroke-width="2"/>
+<circle cx="6" cy="6" r="2.6" fill="#8E959B"/>
+<circle cx="38" cy="6" r="2.6" fill="#8E959B"/>
+<circle cx="6" cy="38" r="2.6" fill="#8E959B"/>
+<circle cx="38" cy="38" r="2.6" fill="#8E959B"/>
+<circle cx="22" cy="22" r="14" fill="#FF6B6B" stroke="#9E4242" stroke-width="2"/>
+<text x="22" y="27" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#FFF" font-weight="700">&#9632;</text>
+</g>
+<g transform="translate(900,160)">
+<circle cx="2" cy="3" r="27" fill="#000" opacity="0.10"/>
+<circle r="27" fill="#1F1F1F" stroke="#000" stroke-width="2"/>
+<circle r="20" fill="none" stroke="#3A3A3A" stroke-width="1.5"/>
+<circle r="4.5" fill="#0A0A0A" stroke="#444" stroke-width="1"/>
+<text x="0" y="-33" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#5A5346">Passive buzzer</text>
+<text x="-14" y="16" font-family="'SF Mono', 'Fira Code', monospace" font-size="9" fill="#BBB">+</text>
+</g>
+<text x="700" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="#5A5346">Play/Pause</text>
+<text x="762" y="106" text-anchor="start" font-size="11" font-weight="700" fill="#5A5346">Stop</text>
+<path d="M 68 252 C 68 342, 528 401, 528 491" fill="none" stroke="#8A6800" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 68 252 C 68 342, 528 401, 528 491" fill="none" stroke="#E0A800" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="68" cy="252" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="528" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="258" y="398" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">SDA &#8594; GPIO8</text><text x="258" y="398" text-anchor="middle" fill="#A87E00">SDA &#8594; GPIO8</text></g>
+<path d="M 89 252 C 89 352, 528 409, 528 509" fill="none" stroke="#8A4A00" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 89 252 C 89 352, 528 409, 528 509" fill="none" stroke="#E07800" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="89" cy="252" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="528" cy="509" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="230" y="368" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">SCK &#8594; GPIO11</text><text x="230" y="368" text-anchor="middle" fill="#A85A00">SCK &#8594; GPIO11</text></g>
+<path d="M 109 252 C 109 332, 491 429, 491 509" fill="none" stroke="#1C612A" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 109 252 C 109 332, 491 429, 491 509" fill="none" stroke="#2E9E44" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="109" cy="252" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="491" cy="509" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="232" y="430" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">MOSI &#8594; GPIO10</text><text x="232" y="430" text-anchor="middle" fill="#227633">MOSI &#8594; GPIO10</text></g>
+<path d="M 130 252 C 130 338, 509 423, 509 509" fill="none" stroke="#1D3A80" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 130 252 C 130 338, 509 423, 509 509" fill="none" stroke="#2F5FD0" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="130" cy="252" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="509" cy="509" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="336" y="468" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">MISO &#8594; GPIO9</text><text x="336" y="468" text-anchor="middle" fill="#23479C">MISO &#8594; GPIO9</text></g>
+<path d="M 191 252 C 191 364, 509 379, 509 491" fill="none" stroke="#8F8F8F" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 191 252 C 191 364, 509 379, 509 491" fill="none" stroke="#E8E8E8" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="191" cy="252" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="509" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="414" y="338" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">RST &#8594; GPIO25</text><text x="414" y="338" text-anchor="middle" fill="#AEAEAE">RST &#8594; GPIO25</text></g>
+<path d="M 212 252 C 212 312, 472 449, 472 509" fill="none" stroke="#821D1D" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 212 252 C 212 312, 472 449, 472 509" fill="none" stroke="#D32F2F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="212" cy="252" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="472" cy="509" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="326" y="342" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">3.3V</text><text x="326" y="342" text-anchor="middle" fill="#9E2323">3.3V</text></g>
+<path d="M 171 252 C 171 298, 360 445, 360 491" fill="none" stroke="#22201D" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 171 252 C 171 298, 360 445, 360 491" fill="none" stroke="#37352F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="171" cy="252" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="360" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="214" y="380" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">GND</text><text x="214" y="380" text-anchor="middle" fill="#292723">GND</text></g>
+<path d="M 324 130 C 254 130, 416 421, 416 491" fill="none" stroke="#1C612A" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 324 130 C 254 130, 416 421, 416 491" fill="none" stroke="#2E9E44" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="324" cy="130" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="416" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="408" y="320" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">DIN &#8594; GPIO18</text><text x="408" y="320" text-anchor="middle" fill="#227633">DIN &#8594; GPIO18</text></g>
+<path d="M 324 118 C 234 118, 323 401, 323 491" fill="none" stroke="#821D1D" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 324 118 C 234 118, 323 401, 323 491" fill="none" stroke="#D32F2F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="324" cy="118" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="323" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="286" y="271" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">5V</text><text x="286" y="271" text-anchor="middle" fill="#9E2323">5V</text></g>
+<path d="M 324 142 C 268 142, 398 453, 398 509" fill="none" stroke="#22201D" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 324 142 C 268 142, 398 453, 398 509" fill="none" stroke="#37352F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="324" cy="142" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="398" cy="509" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<path d="M 670 164 C 670 294, 416 379, 416 509" fill="none" stroke="#8A6800" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 670 164 C 670 294, 416 379, 416 509" fill="none" stroke="#E0A800" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="670" cy="164" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="416" cy="509" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="533" y="330" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">GPIO17</text><text x="533" y="330" text-anchor="middle" fill="#A87E00">GPIO17</text></g>
+<path d="M 694 164 C 694 284, 435 371, 435 491" fill="none" stroke="#22201D" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 694 164 C 694 284, 435 371, 435 491" fill="none" stroke="#37352F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="694" cy="164" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="435" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<path d="M 750 164 C 750 324, 435 349, 435 509" fill="none" stroke="#8A6800" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 750 164 C 750 324, 435 349, 435 509" fill="none" stroke="#E0A800" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="750" cy="164" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="435" cy="509" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="622" y="320" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">GPIO27</text><text x="622" y="320" text-anchor="middle" fill="#A87E00">GPIO27</text></g>
+<path d="M 774 164 C 774 312, 491 343, 491 491" fill="none" stroke="#22201D" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 774 164 C 774 312, 491 343, 491 491" fill="none" stroke="#37352F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="774" cy="164" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="491" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<path d="M 891 185 C 891 315, 602 361, 602 491" fill="none" stroke="#8A6800" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 891 185 C 891 315, 602 361, 602 491" fill="none" stroke="#E0A800" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="891" cy="185" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="602" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="773" y="308" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">GPIO12</text><text x="773" y="308" text-anchor="middle" fill="#A87E00">GPIO12</text></g>
+<path d="M 909 185 C 909 295, 621 381, 621 491" fill="none" stroke="#22201D" stroke-width="5.6" stroke-linecap="round" opacity="0.9"/>
+<path d="M 909 185 C 909 295, 621 381, 621 491" fill="none" stroke="#37352F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="909" cy="185" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<circle cx="621" cy="491" r="3.6" fill="#222" stroke="#555" stroke-width="1"/>
+<g font-family="'SF Mono', 'Fira Code', monospace" font-size="10" font-weight="700"><text x="821" y="344" text-anchor="middle" fill="#FFF" stroke="#FFF" stroke-width="3.4" paint-order="stroke">GND</text><text x="821" y="344" text-anchor="middle" fill="#292723">GND</text></g>
+<g transform="translate(18,560)">
+      <rect width="252" height="62" rx="10" fill="#6C63FF" fill-opacity="0.07" stroke="#6C63FF" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <text x="126" y="25" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6C63FF">Audio &#8212; Bluetooth (A2DP), no wires</text>
+      <text x="126" y="44" text-anchor="middle" font-size="9.5" fill="#636E72">Pi pairs with the speaker at boot</text>
+    </g>
+<g transform="translate(730,560)">
+      <rect width="252" height="62" rx="10" fill="#636E72" fill-opacity="0.07" stroke="#636E72" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <text x="126" y="25" text-anchor="middle" font-size="10.5" font-weight="700" fill="#636E72">Video &#8212; mini-HDMI cable to TV</text>
+      <text x="126" y="44" text-anchor="middle" font-size="9.5" fill="#636E72">Picture on TV, sound on speaker</text>
+    </g>
+<g transform="translate(0,674)" font-size="9.5">
+<line x1="66.0" y1="-3" x2="88.0" y2="-3" stroke="#8A6800" stroke-width="6" stroke-linecap="round"/>
+<line x1="66.0" y1="-3" x2="88.0" y2="-3" stroke="#E0A800" stroke-width="3.6" stroke-linecap="round"/>
+<text x="94.0" y="0" fill="#636E72">Signal / data</text>
+<line x1="190.0" y1="-3" x2="212.0" y2="-3" stroke="#8A4A00" stroke-width="6" stroke-linecap="round"/>
+<line x1="190.0" y1="-3" x2="212.0" y2="-3" stroke="#E07800" stroke-width="3.6" stroke-linecap="round"/>
+<text x="218.0" y="0" fill="#636E72">SCK / clock</text>
+<line x1="314.0" y1="-3" x2="336.0" y2="-3" stroke="#1C612A" stroke-width="6" stroke-linecap="round"/>
+<line x1="314.0" y1="-3" x2="336.0" y2="-3" stroke="#2E9E44" stroke-width="3.6" stroke-linecap="round"/>
+<text x="342.0" y="0" fill="#636E72">MOSI / DIN</text>
+<line x1="438.0" y1="-3" x2="460.0" y2="-3" stroke="#1D3A80" stroke-width="6" stroke-linecap="round"/>
+<line x1="438.0" y1="-3" x2="460.0" y2="-3" stroke="#2F5FD0" stroke-width="3.6" stroke-linecap="round"/>
+<text x="466.0" y="0" fill="#636E72">MISO</text>
+<line x1="562.0" y1="-3" x2="584.0" y2="-3" stroke="#8F8F8F" stroke-width="6" stroke-linecap="round"/>
+<line x1="562.0" y1="-3" x2="584.0" y2="-3" stroke="#E8E8E8" stroke-width="3.6" stroke-linecap="round"/>
+<text x="590.0" y="0" fill="#636E72">RST / misc</text>
+<line x1="686.0" y1="-3" x2="708.0" y2="-3" stroke="#821D1D" stroke-width="6" stroke-linecap="round"/>
+<line x1="686.0" y1="-3" x2="708.0" y2="-3" stroke="#D32F2F" stroke-width="3.6" stroke-linecap="round"/>
+<text x="714.0" y="0" fill="#636E72">Power</text>
+<line x1="810.0" y1="-3" x2="832.0" y2="-3" stroke="#22201D" stroke-width="6" stroke-linecap="round"/>
+<line x1="810.0" y1="-3" x2="832.0" y2="-3" stroke="#37352F" stroke-width="3.6" stroke-linecap="round"/>
+<text x="838.0" y="0" fill="#636E72">Ground</text>
+</g>
+</svg>

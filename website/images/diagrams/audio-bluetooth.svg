@@ -1,0 +1,103 @@
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter, -apple-system, 'Segoe UI', sans-serif">
+<defs>
+  <linearGradient id="pcbGreen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#3E9A52"/><stop offset="1" stop-color="#27713A"/>
+  </linearGradient>
+  <linearGradient id="pcbBlue" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#2C6FC4"/><stop offset="1" stop-color="#174E96"/>
+  </linearGradient>
+  <radialGradient id="coneGrad" cx="0.38" cy="0.34" r="0.9">
+    <stop offset="0" stop-color="#6E747A"/><stop offset="0.7" stop-color="#3C4146"/><stop offset="1" stop-color="#26292C"/>
+  </radialGradient>
+  <radialGradient id="capGrad" cx="0.35" cy="0.3" r="1">
+    <stop offset="0" stop-color="#53595F"/><stop offset="1" stop-color="#1E2124"/>
+  </radialGradient>
+</defs>
+<rect width="760" height="300" rx="16" fill="#FDFBF7"/>
+<g transform="translate(40,60) scale(0.62)"><g transform="translate(0,0)">
+<rect x="3" y="5" width="420" height="190" rx="14" fill="#000" opacity="0.10"/>
+<rect width="420" height="190" rx="14" fill="url(#pcbGreen)" stroke="#1B4D2A" stroke-width="2"/>
+<circle cx="16" cy="16" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="16" cy="16" r="3.5" fill="#FAF6EC"/>
+<circle cx="404" cy="16" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="404" cy="16" r="3.5" fill="#FAF6EC"/>
+<circle cx="16" cy="174" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="16" cy="174" r="3.5" fill="#FAF6EC"/>
+<circle cx="404" cy="174" r="7" fill="#C9A227" stroke="#8C6E14" stroke-width="1.5"/>
+<circle cx="404" cy="174" r="3.5" fill="#FAF6EC"/>
+<rect x="16" y="10" width="388" height="40" rx="4" fill="#1A1A1A"/>
+<rect x="30.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="30.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="48.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="48.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="67.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="67.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="85.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="85.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="104.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="104.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="123.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="123.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="141.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="141.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="160.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="160.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="178.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="178.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="197.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="197.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="216.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="216.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="234.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="234.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="253.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="253.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="271.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="271.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="290.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="290.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="309.1" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="309.1" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="327.7" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="327.7" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="346.3" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="346.3" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="364.9" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="364.9" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="383.5" y="35.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="383.5" y="17.8" width="6.4" height="6.4" fill="#E6C35C" stroke="#9C7E20" stroke-width="0.8"/>
+<rect x="27.7" y="33.4" width="11.2" height="11.2" fill="none" stroke="#FFF" stroke-width="1.2"/>
+<text x="21.299999999999997" y="55" font-family="'SF Mono', 'Fira Code', monospace" font-size="9" fill="#CFE8D5">1</text>
+<text x="392.70000000000005" y="-3" font-family="'SF Mono', 'Fira Code', monospace" font-size="9" fill="#CFE8D5">40</text>
+<rect x="178.0" y="92" width="64" height="64" rx="4" fill="#2B2B2B" stroke="#111" stroke-width="1"/>
+<text x="210.0" y="121" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="8" fill="#888">BCM2710A1</text>
+<text x="210.0" y="133" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="7" fill="#666">+ 512MB RAM</text>
+<rect x="-6" y="76" width="46" height="40" rx="3" fill="#9DA5AB" stroke="#6B7176" stroke-width="1.5"/>
+<text x="18" y="100" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" fill="#3A3F44" font-weight="600">microSD</text>
+<rect x="406" y="72" width="14" height="48" rx="2" fill="#D8D2C4" stroke="#A89F8C" stroke-width="1"/>
+<rect x="96" y="174" width="64" height="22" rx="3" fill="#AEB6BC" stroke="#787F85" stroke-width="1.5"/>
+<rect x="102" y="180" width="52" height="10" rx="2" fill="#42484D"/>
+<text x="128.0" y="212" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="9" fill="#636E72">mini-HDMI</text>
+<rect x="218" y="174" width="44" height="22" rx="3" fill="#AEB6BC" stroke="#787F85" stroke-width="1.5"/>
+<rect x="224" y="180" width="32" height="10" rx="2" fill="#42484D"/>
+<text x="240.0" y="212" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="9" fill="#636E72">USB (OTG)</text>
+<rect x="286" y="174" width="44" height="22" rx="3" fill="#AEB6BC" stroke="#787F85" stroke-width="1.5"/>
+<rect x="292" y="180" width="32" height="10" rx="2" fill="#42484D"/>
+<text x="308.0" y="212" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="9" fill="#636E72">USB (PWR)</text>
+<text x="210.0" y="78" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#E8F5EC">Pi Zero 2 W</text>
+</g></g>
+<path d="M 392 102 A 30 30 0 0 1 392 162" fill="none" stroke="#6C63FF" stroke-width="3.2" stroke-linecap="round" opacity="0.85"/>
+<path d="M 392 80 A 52 52 0 0 1 392 184" fill="none" stroke="#6C63FF" stroke-width="3.2" stroke-linecap="round" opacity="0.6"/>
+<path d="M 392 58 A 74 74 0 0 1 392 206" fill="none" stroke="#6C63FF" stroke-width="3.2" stroke-linecap="round" opacity="0.35"/>
+<text x="432" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#6C63FF">Bluetooth A2DP</text>
+<text x="432" y="70" text-anchor="middle" font-size="9.5" fill="#8A85C9">no wiring at all</text>
+<g transform="translate(540,52)">
+      <rect x="4" y="6" width="160" height="160" rx="18" fill="#000" opacity="0.10"/>
+      <rect width="160" height="160" rx="18" fill="#F2EFE8" stroke="#C9C4B8" stroke-width="2.5"/>
+      <rect x="46" y="-2" width="26" height="8" rx="4" fill="#C9C4B8"/>
+      <rect x="86" y="-2" width="26" height="8" rx="4" fill="#C9C4B8"/>
+<circle cx="49" cy="33" r="4.6" fill="#B8B2A4"/><circle cx="65" cy="33" r="4.6" fill="#B8B2A4"/><circle cx="81" cy="33" r="4.6" fill="#B8B2A4"/><circle cx="97" cy="33" r="4.6" fill="#B8B2A4"/><circle cx="113" cy="33" r="4.6" fill="#B8B2A4"/><circle cx="33" cy="49" r="4.6" fill="#B8B2A4"/><circle cx="49" cy="49" r="4.6" fill="#B8B2A4"/><circle cx="65" cy="49" r="4.6" fill="#B8B2A4"/><circle cx="81" cy="49" r="4.6" fill="#B8B2A4"/><circle cx="97" cy="49" r="4.6" fill="#B8B2A4"/><circle cx="113" cy="49" r="4.6" fill="#B8B2A4"/><circle cx="129" cy="49" r="4.6" fill="#B8B2A4"/><circle cx="33" cy="65" r="4.6" fill="#B8B2A4"/><circle cx="49" cy="65" r="4.6" fill="#B8B2A4"/><circle cx="65" cy="65" r="4.6" fill="#B8B2A4"/><circle cx="81" cy="65" r="4.6" fill="#B8B2A4"/><circle cx="97" cy="65" r="4.6" fill="#B8B2A4"/><circle cx="113" cy="65" r="4.6" fill="#B8B2A4"/><circle cx="129" cy="65" r="4.6" fill="#B8B2A4"/><circle cx="33" cy="81" r="4.6" fill="#B8B2A4"/><circle cx="49" cy="81" r="4.6" fill="#B8B2A4"/><circle cx="65" cy="81" r="4.6" fill="#B8B2A4"/><circle cx="81" cy="81" r="4.6" fill="#B8B2A4"/><circle cx="97" cy="81" r="4.6" fill="#B8B2A4"/><circle cx="113" cy="81" r="4.6" fill="#B8B2A4"/><circle cx="129" cy="81" r="4.6" fill="#B8B2A4"/><circle cx="33" cy="97" r="4.6" fill="#B8B2A4"/><circle cx="49" cy="97" r="4.6" fill="#B8B2A4"/><circle cx="65" cy="97" r="4.6" fill="#B8B2A4"/><circle cx="81" cy="97" r="4.6" fill="#B8B2A4"/><circle cx="97" cy="97" r="4.6" fill="#B8B2A4"/><circle cx="113" cy="97" r="4.6" fill="#B8B2A4"/><circle cx="129" cy="97" r="4.6" fill="#B8B2A4"/><circle cx="33" cy="113" r="4.6" fill="#B8B2A4"/><circle cx="49" cy="113" r="4.6" fill="#B8B2A4"/><circle cx="65" cy="113" r="4.6" fill="#B8B2A4"/><circle cx="81" cy="113" r="4.6" fill="#B8B2A4"/><circle cx="97" cy="113" r="4.6" fill="#B8B2A4"/><circle cx="113" cy="113" r="4.6" fill="#B8B2A4"/><circle cx="49" cy="129" r="4.6" fill="#B8B2A4"/><circle cx="65" cy="129" r="4.6" fill="#B8B2A4"/><circle cx="81" cy="129" r="4.6" fill="#B8B2A4"/><circle cx="97" cy="129" r="4.6" fill="#B8B2A4"/>
+</g>
+<text x="620" y="242" text-anchor="middle" font-size="12" font-weight="700" fill="#5A5346">Any Bluetooth speaker</text>
+<text x="620" y="258" text-anchor="middle" font-size="10" fill="#8A8474">paired once via the web UI</text>
+</svg>

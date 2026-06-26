@@ -26,6 +26,7 @@
       </a>
       <div class="nav-links" id="navLinks">
         <a href="features.html">Features</a>
+        <a href="viewer.html">3D Viewer</a>
         <a href="setup.html">Setup</a>
         <a href="assembly-guide.html" class="active">Assembly Guide</a>
         <a href="faq.html">FAQ</a>
@@ -59,6 +60,7 @@
       <a href="#magnets">Magnets</a>
       <a href="#mounting">Electronics</a>
       <a href="#wiring">Wiring</a>
+      <a href="#audio">Audio Output</a>
       <a href="#figurines">Figurines</a>
       <a href="#assembly">Final Assembly</a>
       <a href="#safety">Safety</a>
@@ -90,7 +92,7 @@
             <tr><td>MFRC522 RFID Module</td><td>1</td><td>Sensor kit</td><td>--</td></tr>
             <tr><td>RFID coin stickers (25mm, 13.56 MHz)</td><td>10</td><td>Purchase</td><td>~$5</td></tr>
             <tr><td>Neodymium magnets (6x3mm disc)</td><td>20+</td><td>Purchase</td><td>~$5</td></tr>
-            <tr><td>Bluetooth speaker</td><td>1</td><td>Already owned</td><td>~$0-20</td></tr>
+            <tr><td>Bluetooth speaker (or the <a href="#audio">wired speaker mod</a>)</td><td>1</td><td>Already owned</td><td>~$0-20</td></tr>
             <tr><td>WS2812 RGB 8-LED strip</td><td>1</td><td>Sensor kit</td><td>--</td></tr>
             <tr><td>Passive buzzer</td><td>1</td><td>Sensor kit</td><td>--</td></tr>
             <tr><td>Tactile buttons (6x6mm)</td><td>2</td><td>Sensor kit</td><td>--</td></tr>
@@ -140,7 +142,7 @@
             <tr><td><span class="pin-dot gnd"></span>WS2812 GND</td><td>GND</td><td>Any GND pin</td></tr>
             <tr><td><span class="pin-dot gpio"></span>Play/Pause btn</td><td>GPIO 17</td><td>Internal pull-up</td></tr>
             <tr><td><span class="pin-dot gpio"></span>Stop button</td><td>GPIO 27</td><td>Internal pull-up</td></tr>
-            <tr><td><span class="pin-dot pwm"></span>Buzzer signal</td><td>GPIO 12</td><td>PWM1</td></tr>
+            <tr><td><span class="pin-dot pwm"></span>Buzzer signal</td><td>GPIO 12</td><td>PWM0</td></tr>
             <tr><td><span class="pin-dot gnd"></span>Buzzer GND</td><td>GND</td><td>Any GND pin</td></tr>
           </tbody>
         </table>
@@ -316,6 +318,10 @@
         <span><span class="pin-dot gpio"></span>GPIO (Buttons/RST)</span>
         <span><span class="pin-dot power"></span>Power (3.3V/5V)</span>
         <span><span class="pin-dot gnd"></span>Ground</span>
+      </div>
+
+      <div class="note-box">
+        <strong>NOTE:</strong> Building the <a href="#audio">wired speaker mod</a>? Three pins change: GPIO 18/19/21 go to the I2S amplifier and the LED strip moves to GPIO 13 (pin 33). Details in the Audio Output section.
       </div>
     </div>
   </section>
@@ -623,7 +629,7 @@
         <p>A 12 mm passive buzzer sits in a ring cradle in the back-right corner of the floor.</p>
         <ul>
           <li>Cradle outer diameter: 15 mm, inner: 12.4 mm.</li>
-          <li>Signal pin connects to GPIO 12 (PWM1). GND to any ground pin.</li>
+          <li>Signal pin connects to GPIO 12 (PWM0). GND to any ground pin.</li>
           <li>Passive buzzers require a PWM signal to produce tones (unlike active buzzers).</li>
         </ul>
       </div>
@@ -639,97 +645,9 @@
         <p>All wiring goes through the half breadboard. Use jumper wires (male-to-female for the Pi header, male-to-male for the breadboard).</p>
       </div>
 
-      <!-- Wiring Overview Diagram -->
-      <div class="diagram-container reveal">
-        <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" style="max-width: 680px;">
-          <text x="340" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#2D3436">Wiring Overview</text>
-
-          <!-- Central Pi -->
-          <rect x="230" y="150" width="200" height="120" rx="8" fill="#2D8B4E" fill-opacity="0.12" stroke="#2D8B4E" stroke-width="2"/>
-          <text x="330" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#2D8B4E" font-weight="700">Raspberry Pi Zero 2 W</text>
-          <text x="330" y="212" text-anchor="middle" font-family="monospace" font-size="9" fill="#2D8B4E">40-pin GPIO Header</text>
-
-          <!-- SPI pins label on Pi -->
-          <text x="248" y="240" font-family="monospace" font-size="7" fill="#6495ED">SPI0: 8,9,10,11,25</text>
-          <!-- PWM pins label -->
-          <text x="340" y="240" font-family="monospace" font-size="7" fill="#4CAF50">PWM: 12,18</text>
-          <!-- GPIO pins label -->
-          <text x="248" y="252" font-family="monospace" font-size="7" fill="#FFA726">GPIO: 17,27</text>
-
-          <!-- MFRC522 Box (left) -->
-          <rect x="20" y="130" width="140" height="80" rx="6" fill="#6495ED" fill-opacity="0.1" stroke="#6495ED" stroke-width="1.5"/>
-          <text x="90" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#6495ED" font-weight="700">MFRC522 RFID</text>
-          <text x="90" y="180" text-anchor="middle" font-family="monospace" font-size="8" fill="#6495ED">7 wires (SPI)</text>
-          <!-- 7 wires from MFRC522 to Pi -->
-          <line x1="160" y1="155" x2="230" y2="175" stroke="#DCA800" stroke-width="1.5"/>
-          <line x1="160" y1="160" x2="230" y2="180" stroke="#E07800" stroke-width="1.5"/>
-          <line x1="160" y1="165" x2="230" y2="185" stroke="#28A028" stroke-width="1.5"/>
-          <line x1="160" y1="170" x2="230" y2="190" stroke="#2850C8" stroke-width="1.5"/>
-          <line x1="160" y1="175" x2="230" y2="195" stroke="#B4B4B4" stroke-width="1.5"/>
-          <line x1="160" y1="180" x2="230" y2="200" stroke="#DC2828" stroke-width="1.5"/>
-          <line x1="160" y1="185" x2="230" y2="205" stroke="#282828" stroke-width="1.5"/>
-
-          <!-- WS2812 LED Strip (top right) -->
-          <rect x="500" y="60" width="150" height="60" rx="6" fill="#4ECDC4" fill-opacity="0.1" stroke="#4ECDC4" stroke-width="1.5"/>
-          <text x="575" y="85" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#4ECDC4" font-weight="700">WS2812 LED Strip</text>
-          <text x="575" y="100" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ECDC4">3 wires (DIN, 5V, GND)</text>
-          <!-- LED dots -->
-          <circle cx="515" cy="108" r="3" fill="#4ECDC4"/>
-          <circle cx="525" cy="108" r="3" fill="#6C63FF"/>
-          <circle cx="535" cy="108" r="3" fill="#FF6B6B"/>
-          <circle cx="545" cy="108" r="3" fill="#FFE66D"/>
-          <circle cx="555" cy="108" r="3" fill="#4ECDC4"/>
-          <circle cx="565" cy="108" r="3" fill="#6C63FF"/>
-          <circle cx="575" cy="108" r="3" fill="#FF6B6B"/>
-          <circle cx="585" cy="108" r="3" fill="#FFE66D"/>
-          <!-- 3 wires -->
-          <line x1="500" y1="80" x2="430" y2="165" stroke="#28A028" stroke-width="1.5"/>
-          <line x1="500" y1="85" x2="430" y2="170" stroke="#DC2828" stroke-width="1.5"/>
-          <line x1="500" y1="90" x2="430" y2="175" stroke="#282828" stroke-width="1.5"/>
-
-          <!-- Buttons (right middle) -->
-          <rect x="500" y="180" width="150" height="80" rx="6" fill="#FFC864" fill-opacity="0.1" stroke="#FFC864" stroke-width="1.5"/>
-          <text x="575" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#FFA726" font-weight="700">Tactile Buttons</text>
-          <text x="575" y="225" text-anchor="middle" font-family="monospace" font-size="8" fill="#FFA726">Play: GPIO17</text>
-          <text x="575" y="237" text-anchor="middle" font-family="monospace" font-size="8" fill="#FFA726">Stop: GPIO27</text>
-          <!-- Button circles -->
-          <circle cx="540" cy="250" r="6" fill="none" stroke="#FFA726" stroke-width="1.5"/>
-          <circle cx="565" cy="250" r="6" fill="none" stroke="#FFA726" stroke-width="1.5"/>
-          <!-- 4 wires -->
-          <line x1="500" y1="205" x2="430" y2="195" stroke="#FFA726" stroke-width="1.5"/>
-          <line x1="500" y1="210" x2="430" y2="200" stroke="#FFA726" stroke-width="1.5"/>
-          <line x1="500" y1="220" x2="430" y2="210" stroke="#282828" stroke-width="1.5"/>
-          <line x1="500" y1="225" x2="430" y2="215" stroke="#282828" stroke-width="1.5"/>
-
-          <!-- Buzzer (bottom right) -->
-          <rect x="500" y="310" width="150" height="60" rx="6" fill="#90EE90" fill-opacity="0.15" stroke="#90EE90" stroke-width="1.5"/>
-          <text x="575" y="335" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#4CAF50" font-weight="700">Passive Buzzer</text>
-          <text x="575" y="350" text-anchor="middle" font-family="monospace" font-size="8" fill="#4CAF50">2 wires (GPIO12, GND)</text>
-          <!-- 2 wires -->
-          <line x1="500" y1="330" x2="430" y2="250" stroke="#DCA800" stroke-width="1.5"/>
-          <line x1="500" y1="340" x2="430" y2="255" stroke="#282828" stroke-width="1.5"/>
-
-          <!-- Bottom: Audio + Video output -->
-          <rect x="180" y="320" width="120" height="50" rx="6" fill="#6C63FF" fill-opacity="0.08" stroke="#6C63FF" stroke-width="1" stroke-dasharray="3 2"/>
-          <text x="240" y="345" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#6C63FF" font-weight="600">Bluetooth Audio</text>
-          <text x="240" y="358" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#636E72">A2DP to Speaker</text>
-          <path d="M290 310 Q290 298 300 290" stroke="#6C63FF" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
-
-          <rect x="340" y="320" width="100" height="50" rx="6" fill="#636E72" fill-opacity="0.08" stroke="#636E72" stroke-width="1" stroke-dasharray="3 2"/>
-          <text x="390" y="345" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#636E72" font-weight="600">HDMI Video</text>
-          <text x="390" y="358" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Mini-HDMI to TV</text>
-          <path d="M370 310 Q370 298 360 290" stroke="#636E72" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
-
-          <!-- Wire color legend -->
-          <rect x="20" y="400" width="640" height="55" rx="6" fill="#F5F5F0" stroke="#E0E0E0" stroke-width="1"/>
-          <text x="40" y="420" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#2D3436">Wire Colors:</text>
-          <line x1="40" y1="435" x2="55" y2="435" stroke="#DCA800" stroke-width="2.5"/><text x="60" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Yellow (SDA/Signal)</text>
-          <line x1="170" y1="435" x2="185" y2="435" stroke="#E07800" stroke-width="2.5"/><text x="190" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Orange (SCK)</text>
-          <line x1="280" y1="435" x2="295" y2="435" stroke="#28A028" stroke-width="2.5"/><text x="300" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Green (MOSI/DIN)</text>
-          <line x1="420" y1="435" x2="435" y2="435" stroke="#2850C8" stroke-width="2.5"/><text x="440" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Blue (MISO)</text>
-          <line x1="520" y1="435" x2="535" y2="435" stroke="#DC2828" stroke-width="2.5"/><text x="540" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Red (Power)</text>
-          <line x1="610" y1="435" x2="625" y2="435" stroke="#282828" stroke-width="2.5"/><text x="630" y="439" font-family="Inter, sans-serif" font-size="8" fill="#636E72">Black (GND)</text>
-        </svg>
+      <!-- Wiring Overview Diagram (generated by docs/generate-wiring-diagrams.py) -->
+      <div class="diagram-container reveal" style="max-width: 900px;">
+        <img src="images/diagrams/wiring-stock.svg" alt="Realistic wiring diagram of the standard BabyBox build: MFRC522 RFID reader, WS2812 LED strip, two buttons and a passive buzzer connected to the Raspberry Pi Zero 2 W 40-pin header" style="width: 100%; height: auto;">
       </div>
 
       <h3>MFRC522 RFID Module (7 wires)</h3>
@@ -781,7 +699,7 @@
         <table class="bom-table reveal">
           <thead><tr><th>Buzzer Pin</th><th>Wire Color</th><th>Pi Header Pin</th></tr></thead>
           <tbody>
-            <tr><td>Signal (+)</td><td class="wire-yellow">Yellow</td><td>GPIO 12 (Pin 32, PWM1)</td></tr>
+            <tr><td>Signal (+)</td><td class="wire-yellow">Yellow</td><td>GPIO 12 (Pin 32, PWM0)</td></tr>
             <tr><td>GND (-)</td><td class="wire-black">Black</td><td>GND (Pin 34)</td></tr>
           </tbody>
         </table>
@@ -793,8 +711,128 @@
     </div>
   </section>
 
+  <!-- Section 6b: Audio Output Options -->
+  <section class="section" id="audio">
+    <div class="container guide-content scroll-target">
+      <div class="section-header">
+        <span class="badge">Audio Output</span>
+        <h2>Audio Output &mdash; Pick One of Two Options</h2>
+        <p>The BabyBox can play sound two ways. Option A is the standard build: a Bluetooth speaker and zero audio wiring. Option B is a fully wired speaker built from a torn-down IKEA KALLSUP &mdash; more soldering, but audio that works the instant the Pi boots, with no pairing and no battery to charge.</p>
+      </div>
+
+      <h3>Option A &mdash; Bluetooth Speaker (standard build)</h3>
+      <p>This is the default described everywhere else in this guide. The Pi's built-in Bluetooth connects to any A2DP speaker &mdash; nothing extra to wire, mount, or solder.</p>
+
+      <div class="diagram-container reveal">
+        <img src="images/diagrams/audio-bluetooth.svg" alt="The Raspberry Pi connects to any Bluetooth speaker over A2DP with no wiring" style="width: 100%; height: auto;">
+      </div>
+
+      <ul>
+        <li>Pair the speaker once in the parent web UI; the Pi reconnects automatically at every boot.</li>
+        <li>The speaker can sit anywhere near the child, at a volume you set on the speaker itself.</li>
+        <li>If the speaker is off or out of range, audio falls back to the TV over HDMI.</li>
+        <li>Trade-offs: a battery to keep charged, occasional pairing hiccups, and ~0.2 s of Bluetooth latency on button feedback sounds.</li>
+      </ul>
+
+      <div class="note-box">
+        <strong>NOTE:</strong> If you choose Option A you are done with audio &mdash; skip the rest of this section and continue with Figurines below.
+      </div>
+
+      <h3>Option B &mdash; Wired Speaker Mod (KALLSUP + MAX98357A)</h3>
+      <p>Tear down a $10 IKEA KALLSUP Bluetooth cube, keep only its speaker driver, and drive it directly from the Pi through a MAX98357A I2S amplifier. The speaker lives inside (or beside) the BabyBox: one box, one power cable, instant-on audio.</p>
+
+      <h4>Extra parts</h4>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead><tr><th>Part</th><th>Source</th><th>Est. Cost</th></tr></thead>
+          <tbody>
+            <tr><td>IKEA KALLSUP speaker (donor &mdash; driver only)</td><td>IKEA</td><td>~$10</td></tr>
+            <tr><td>MAX98357A I2S amp breakout (Adafruit 3006 or clone)</td><td>Purchase</td><td>~$3&ndash;6</td></tr>
+            <tr><td>Speaker wire, 24 AWG twisted pair (~20 cm)</td><td>Sensor kit</td><td>--</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The Bluetooth speaker from the main BOM is no longer needed. The amp draws at most ~0.7 A from the 5V rail &mdash; the 5V 3A supply has plenty of headroom.</p>
+
+      <h4>Step 1 &mdash; Tear down the KALLSUP</h4>
+      <ol>
+        <li>Peel the four rubber feet and remove the screws beneath them, then gently pry the cube open along its seams.</li>
+        <li>Photograph the board before touching anything, so you have a reference.</li>
+        <li>Desolder the two speaker wires from the Bluetooth PCB (or cut them as long as possible).</li>
+        <li>Remove the battery, tape over its contacts immediately, and take it to battery recycling.</li>
+        <li>Keep the driver. The Bluetooth PCB, antenna, and buttons are not used. The cube shell and grille are optional &mdash; reuse them as an external speaker pod if you don't want the driver inside the BabyBox.</li>
+      </ol>
+
+      <div class="warning-box">
+        <strong>WARNING:</strong> The KALLSUP contains a lithium battery. Never puncture, short, or bin it &mdash; tape the contacts and recycle it at a battery drop-off point.
+      </div>
+
+      <h4>Step 2 &mdash; Verify the driver</h4>
+      <p>Measure the DC resistance across the driver terminals with a multimeter before connecting anything:</p>
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead><tr><th>Multimeter reading</th><th>Nominal impedance</th><th>MAX98357A output @ 5V</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td>~3.2&ndash;3.6 &Omega;</td><td>4 &Omega; (expected)</td><td>up to 3.2 W</td><td>Good</td></tr>
+            <tr><td>~6.4&ndash;7.2 &Omega;</td><td>8 &Omega;</td><td>up to 1.8 W</td><td>Good, slightly quieter</td></tr>
+            <tr><td>Below 3 &Omega;</td><td>suspect</td><td>--</td><td>Do not connect</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Note the + and &minus; markings on the driver terminals while you can still see the original wiring.</p>
+
+      <h4>Step 3 &mdash; Wire the amplifier</h4>
+      <div class="diagram-container reveal" style="max-width: 900px;">
+        <img src="images/diagrams/wiring-wired-speaker.svg" alt="Wiring diagram for the wired speaker mod: five jumper wires from the Pi header to the MAX98357A I2S amplifier, two speaker wires to the salvaged KALLSUP driver, and the LED strip data pin moved to GPIO 13" style="width: 100%; height: auto;">
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="bom-table reveal">
+          <thead><tr><th>MAX98357A Pin</th><th>Wire Color</th><th>Pi Header Pin</th></tr></thead>
+          <tbody>
+            <tr><td>Vin</td><td class="wire-red">Red</td><td>5V (Pin 4)</td></tr>
+            <tr><td>GND</td><td class="wire-black">Black</td><td>GND (Pin 6)</td></tr>
+            <tr><td>BCLK</td><td class="wire-orange">Orange</td><td>GPIO 18 (Pin 12, PCM_CLK)</td></tr>
+            <tr><td>LRC</td><td class="wire-white">White</td><td>GPIO 19 (Pin 35, PCM_FS)</td></tr>
+            <tr><td>DIN</td><td class="wire-green">Green</td><td>GPIO 21 (Pin 40, PCM_DOUT)</td></tr>
+            <tr><td>GAIN</td><td>--</td><td>Not connected (= 9 dB gain)</td></tr>
+            <tr><td>SD</td><td>--</td><td>Not connected (= mono (L+R)/2 mix)</td></tr>
+            <tr><td>Speaker +</td><td class="wire-red">Red</td><td>&rarr; driver + terminal</td></tr>
+            <tr><td>Speaker &minus;</td><td class="wire-black">Black</td><td>&rarr; driver &minus; terminal</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning-box">
+        <strong>WARNING:</strong> The amp's speaker output is a bridge-tied load (BTL). Never connect either speaker terminal to GND, and never share the speaker wires with any other circuit. Twist the speaker pair, keep it short, and route it away from the MFRC522 antenna.
+      </div>
+
+      <div class="note-box">
+        <strong>PIN CHANGES vs. the standard build:</strong> I2S audio owns GPIO 18, so the WS2812 LED strip's DIN moves from GPIO 18 (pin 12) to <strong>GPIO 13 (pin 33)</strong>. The buzzer stays on GPIO 12 but must use software PWM, because the LED library claims the hardware PWM block. Everything else is wired exactly as shown in the Wiring section above.
+      </div>
+
+      <h4>Step 4 &mdash; Software setup</h4>
+      <p>Enable the I2S DAC overlay in <code>/boot/firmware/config.txt</code>:</p>
+      <div class="code-block">
+        <code>dtoverlay=max98357a
+# or, equivalently (works with clone boards too):
+# dtoverlay=hifiberry-dac</code>
+      </div>
+      <ul>
+        <li>After a reboot the amp shows up as an ALSA sound card &mdash; set it as the default PulseAudio sink. mpv needs no changes.</li>
+        <li>In the BabyBox web UI, leave the Bluetooth speaker MAC empty &mdash; pairing and reconnect logic are skipped entirely.</li>
+        <li>Set the LED strip GPIO to 13 in the app configuration.</li>
+        <li>The MAX98357A has no volume knob: set the output level in software (PulseAudio/ALSA), then check it with a child-height ear before handing the box over.</li>
+      </ul>
+
+      <div class="note-box">
+        <strong>TIP:</strong> For a hard loudness ceiling regardless of software settings, wire GAIN to Vin instead of leaving it unconnected. That drops the amp gain from 9 dB to 6 dB &mdash; a sensible cap for toddler ears.
+      </div>
+    </div>
+  </section>
+
   <!-- Section 7: Figurine Construction -->
-  <section class="section" id="figurines">
+  <section class="section" id="figurines" style="background: var(--color-white);">
     <div class="container guide-content scroll-target">
       <div class="section-header">
         <span class="badge">Figurines</span>
@@ -851,7 +889,7 @@
   </section>
 
   <!-- Section 8: Final Assembly Sequence -->
-  <section class="section" id="assembly" style="background: var(--color-white);">
+  <section class="section" id="assembly">
     <div class="container guide-content scroll-target">
       <div class="section-header">
         <span class="badge">Assembly</span>
@@ -922,14 +960,14 @@
         </div>
         <div class="guide-timeline-step" data-step="16">
           <h4>Final test</h4>
-          <p>Place a figurine on the lid. The RFID tag should be read, the LEDs should animate, and media should play. Connect a Bluetooth speaker and verify audio routing.</p>
+          <p>Place a figurine on the lid. The RFID tag should be read, the LEDs should animate, and media should play. Verify audio on your chosen output &mdash; the paired Bluetooth speaker, or the wired speaker if you built that option.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Section 9: Safety Notes -->
-  <section class="section" id="safety">
+  <section class="section" id="safety" style="background: var(--color-white);">
     <div class="container guide-content scroll-target">
       <div class="section-header">
         <span class="badge">Safety</span>
@@ -967,8 +1005,8 @@
       <div class="component-section">
         <h3>Volume and Hearing</h3>
         <ul>
-          <li>All audio goes to an external Bluetooth speaker.</li>
-          <li>Set the speaker volume to a safe level BEFORE giving it to the child.</li>
+          <li>All audio goes to the speaker &mdash; Bluetooth by default, or the wired speaker if you built that option.</li>
+          <li>Set the speaker volume to a safe level BEFORE giving it to the child. On the wired build, consider the 6 dB GAIN cap (see Audio Output).</li>
           <li>The American Academy of Pediatrics recommends keeping volume below 75 dB for extended listening.</li>
           <li>Place the speaker at least 1 meter from the child when possible.</li>
         </ul>
@@ -1032,6 +1070,7 @@
         <div class="footer-col">
           <h4>Product</h4>
           <a href="features.html">Features</a>
+          <a href="viewer.html">3D Viewer</a>
           <a href="setup.html">Setup Guide</a>
           <a href="assembly-guide.html">Assembly Guide</a>
           <a href="faq.html">FAQ</a>
