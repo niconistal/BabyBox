@@ -220,10 +220,13 @@ function init(mount) {
 
   // ---- Resize & render loop ----
   function resize() {
-    const w = mount.clientWidth, h = mount.clientHeight;
-    renderer.setSize(w, h, false);
+    const w = mount.clientWidth  || (mount.parentElement && mount.parentElement.clientWidth);
+    const h = mount.clientHeight || (mount.parentElement && mount.parentElement.clientHeight);
+    if (!w || !h) return;
+    renderer.setSize(w, h);                 // updateStyle=true; CSS !important keeps it 100%
     camera.aspect = w / h; camera.updateProjectionMatrix();
   }
+  resize();                                 // size immediately so nothing overflows pre-load
   window.addEventListener('resize', resize);
   const ro = new ResizeObserver(resize); ro.observe(mount);
 
